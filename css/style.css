@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'iransans';
-  src: url('fonts/IRANSANS_MEDIUM.ttf') format('truetype');
-}
+  font-family: peyda;
+  src: url(fonts/Peyda-Black.ttf);
 @font-face {
-  font-family: 'Peyda';
-  src: url('fonts/Peyda-Black.ttf') format('truetype');
+    font-family: iransans;
+    src: url(fonts/IRANSANS_MEDIUM.ttf);
+}
 }
 *{
  font-family: iransans;
