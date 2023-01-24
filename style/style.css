@@ -2,36 +2,3 @@
     font-family: iransans ;
     src:url(/fonts/IRANSANS_MEDIUM.TTF) ;
 }
-*{
- font-family: iransans;
- }
-body {
-  color: #ccc;
-  background: rebeccapurple;
-  font-weight: 300;
-  font-size: 1em;
-  line-height: 1.5;
-}
-.container {
-  margin: 0.250em auto;  
-  max-width: 70%;
-  width: 100%;
-}
-.nav {
-  text-align: center;
-}
-.nav a {  
-  margin: 0.625em 0 0.625em 0;
-}
-.paragraph {
-  font-size: 1em;
-  line-height: inherit;
-}
-a { 
-  color: inherit;
-  padding: 1.5em;
-  margin: 50px;
-}
-.title{
- font-family: Peyda;
- }
