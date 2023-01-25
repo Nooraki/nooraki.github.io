@@ -2,3 +2,20 @@
     font-family: iransans ;
     src:url(/fonts/IRANSANS_MEDIUM.TTF) ;
 }
+@font-face{
+    font-family: Peyda ;
+    src:url(/fonts/Peyda-Regular.ttf) ;
+}
+*{
+    direction: rtl;
+    background-color: #2A0066;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: iransans;
+}
+
+.titer{
+    color: #3C6600;
+    font-size: 24px;
+    font-family: peyda;
+}
