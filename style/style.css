@@ -11,67 +11,79 @@ a:hover {color: #000; text-decoration:underline; }
 .center {text-align:center; }
 .hide {display: none;}
 
+/*nav*/
 nav {
-    display: table;
-    table-layout: fixed;
-    width: 75%;
-    margin: 0 auto;
+  margin: 27px auto 0;
+  position: relative;
+  width: 590px;
+  height: 50px;
+  background-color: #34495e;
+  border-radius: 8px;
+  font-size: 0;
+}
+nav a{
+  line-height: 50px;
+  height: 100px;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+nav .animation{
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  z-index: 0;
+  transition: all .5s ease 0s;
+  border-radius: 8px;
+
+}
+a:nth-child(1){
+  width: 100px;
+}
+a:nth-child(2){
+  width: 110px;
+}
+a:nth-child(3){
+  width: 100px;
+}
+a:nth-child(4){
+  width: 160px;
+}
+a:nth-child(5){
+  width: 120px;
+}
+nav a:nth-child(1):hover~.animation {
+  width: 100px;
+  left: 0;
+  background-color: #1abc9c;
+}
+nav a:nth-child(2):hover~.animation {
+  width: 110px;
+  left: 100px;
+  background-color: #e74c3c;
+}
+nav a:nth-child(3):hover~.animation {
+  width: 100px;
+  left: 210px;
+  background-color: #3498db;
+}
+nav a:nth-child(4):hover~.animation {
+  width: 160px;
+  left: 310px;
+  background-color: #9b59b6;
+}
+nav a:nth-child(5):hover~.animation {
+  width: 120px;
+  left: 470px;
+  background-color: #e67e22;
 }
 
-#menu {
-    width:100%;
-    min-height:35px;
-    background-color: #000;
-    position:fixed;
-    z-index:100;
-    top:0; left:0;
-}
-
-#menu a {
-    background-color:inherit;
-    color: #fff;
-}
-
-ul#topnav  {
-    display: table-row;
-    padding: 0;
-    overflow: hidden;
-    position:relative;
-    bottom:0;
-}
-
-ul#topnav li {
-    list-style-type: none;
-    display: table-cell;
-    text-align:center;
-    vertical-align:middle;
-}
-
-ul#topnav li a {
-    display:block;
-    padding:8px;
-    text-decoration:underline;
-}
-
-
-ul#topnav li a:hover {
-    color:#777;
-    text-decoration:none;
-}
-
-ul#topnav li> ul {
-    list-style-type: none;
-    margin:0;
-    padding:0;
-}
-
-
-ul#topnav li> ul > li{
-	font-size:120%;
-    float:left;
-    display:inline;
-    padding-right:5px;
-}
 
 #container {
     width:100%;
@@ -134,21 +146,6 @@ ul#topnav li> ul > li{
     display: table-cell;
 }
 
-#footer {
-    display:table;
-    width:100%;
-    margin-bottom:15px;
-    padding:15px 0;
-    text-align:left;
-    font-size:89%;
-    color:#999;
-}
-
-#footer p {
-     text-align:left;
-     padding:0;
-}
-
 #credits {
     display:table;
     table-layout:fixed;
@@ -159,30 +156,13 @@ ul#topnav li> ul > li{
     text-align:center;
 }
 
-#show-menu  {display:none;}
-.open, .close { background-color:inherit; color:#fff; text-align:right; font-weight:normal; font-size:1.5em; padding: 0; position:absolute; top:10%; right:5%; display:none; }
 
 
 /* start make items responsive */
 @media screen and (max-width : 1024px){
 
 
-/* menu */
-ul#topnav {display:none;}
-.hide, .open { display:block;}
 
-
-#show-menu:checked ~ .open {display:none;}
-#show-menu:checked ~ .close {font-size:1.6em; display:block;}
-#show-menu:checked ~ ul#topnav { display: block; position: absolute; top:100%; right:0%; width:100%; margin:0; margin-bottom:1%; overflow:visible; }
-ul#topnav li { display: block; text-align:center; margin:0; background-color:#000; padding:1% 0;}
-
-ul#topnav li a { display: block; padding-right:0%; padding-bottom:5px; text-decoration:none;}
-ul#topnav li a:hover {text-decoration:underline;}
-
-
-ul#topnav li> ul { display:table; float:none; table-layout:fixed; margin:0 auto;}
-ul#topnav li> ul > li {padding-left:10px; }
 
 /* other items */
 .pageitem h2 {font-size:120%;}
@@ -198,5 +178,15 @@ ul#topnav li> ul > li {padding-left:10px; }
 
 
 
+}
+
+
+
+
+a:hover{
+  color: #ffffff;
+}
+h1{
+  font-size: 24px;
 }
 /* end make items responsive */
