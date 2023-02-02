@@ -15,7 +15,7 @@ a:hover {color: #000; text-decoration:underline; }
 nav {
   margin: 27px auto 0;
   position: relative;
-  width: 590px;
+  width: 80%;
   height: 50px;
   background-color: #34495e;
   border-radius: 8px;
@@ -44,19 +44,19 @@ nav .animation{
 
 }
 a:nth-child(1){
-  width: 100px;
+  width: 75px;
 }
 a:nth-child(2){
-  width: 110px;
+  width: 75px;
 }
 a:nth-child(3){
-  width: 100px;
+  width: 75px;
 }
 a:nth-child(4){
-  width: 160px;
+  width: 75px;
 }
 a:nth-child(5){
-  width: 120px;
+  width: 75px;
 }
 nav a:nth-child(1):hover~.animation {
   width: 100px;
