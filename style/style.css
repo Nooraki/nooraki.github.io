@@ -186,12 +186,11 @@ nav a:nth-child(5):hover~.animation {
 
 
 
-.n123456789{ hover:
-  color #ffffff;
+a:hover{
+  color: #ffffff;
 }
 h1{
   font-size: 24px;
 }
-
 
 /* end make items responsive */
