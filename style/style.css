@@ -1,0 +1,51 @@
+
+@font-face {
+    font-family: 'PINAR';
+    src: url('font/PINAR-BOLD.ttf');
+    }
+@font-face {   
+    font-family: 'Vazir';
+    src: url('font/Vazir.ttf');
+}
+*{
+    font-family: Vazir;
+    }
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    max-width: 70%;
+    margin-left: auto;
+    padding-top: 15px;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 70%
+}
+.border {
+    border: 1px solid #0e0e0e;
+    padding: .5rem;
+    margin-bottom: .5rem
+}
+.title {
+    padding-right: 1.5rem!important
+}
+.text {
+    padding-right: 1rem!important;
+    padding-left: 1rem!important
+}
+.time {
+    font-size: 50%;
+    color: #6c757d;
+    text-align: left
+}
+
+
+
+
+
+
