@@ -1,14 +1,7 @@
 
-@font-face {
-    font-family: 'PINAR';
-    src: url('font/PINAR-BOLD.ttf');
-    }
-@font-face {   
-    font-family: 'Vazir';
-    src: url('font/Vazir.ttf');
-}
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 *{
-    font-family: Vazir;
+    font-family: Rubik;
     }
 .container {
     width: 100%;
