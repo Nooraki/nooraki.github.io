@@ -4,13 +4,7 @@
   direction: rtl;
   font-family: 'Vazirmatn';
 }
-*,
-*::before,
-*::after {
-  margin: 200px;
-  padding: 0;
-  box-sizing: inherit;
-}
+
 
 html {
   box-sizing: border-box;
