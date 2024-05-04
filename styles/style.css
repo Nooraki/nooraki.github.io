@@ -6986,27 +6986,26 @@ input[type=number] {
 }
 
 .bg-telegram {
-  background-image: url(../images/color/telegram.png);
+  background-image: url(../images/Baner/telegram.png);
 }
 
 .bg-instagram {
-  background-image: url(../images/color/instagram.png);
+  background-image: url(../images/Baner/instagram.png);
 }
 
-.bg-threads {
-  background-image: url(../images/color/threads.png);
-}
+
+
 
 .bg-x {
-  background-image: url(../images/color/x.png);
+  background-image: url(../images/Baner/twitter.png);
 }
 
 .bg-eitaa {
-  background-image: url(../images/color/eitaa.png);
+  background-image: url(../images/Baner/eitaa.png);
 }
 
 .bg-youtube {
-  background-image: url(../images/color/youtube.png);
+  background-image: url(../images/Baner/youtube.png);
 }
 
 .bg-design1 {
