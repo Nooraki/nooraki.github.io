@@ -7391,3 +7391,34 @@ input[type=number] {
 .slider-cover-dots .splide__pagination {
   transform: translate(-50%, -40px) !important;
 }
+
+
+
+
+
+
+/*image*/
+.img-canection {
+  background-image: url(../images/Baner/canection.jpg);
+}
+.img-eitaa {
+  background-image: url(../images/Baner/eitaa.png);
+}
+.img-instagram {
+  background-image: url(../images/Baner/instagram.png);
+}
+.img-telegram {
+  background-image: url(../images/Baner/telegram.png);
+}
+.img-twitter {
+  background-image: url(../images/Baner/twitter.png);
+}
+.img-youtube {
+  background-image: url(../images/Baner/youtube.png);
+}
+.img-bitcoin {
+  background-image: url(../images/Blog/bitcoin.jpg);
+}
+.img-design-1 {
+  background-image: url(../images/Design/design\ \(1\).jpg);
+}
