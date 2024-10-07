@@ -1,6 +1,4 @@
-function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude; 1    
+    
 
 const userTab = document.querySelector("[data-userWeather]");
 const searchTab = document.querySelector("[data-searchWeather]");
