@@ -1,10 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+@font-face {
+  font-family: 'iranyekan';
+  src: url('fonts/iranyekanwebboldfanum.eot'); /* IE9 Compat Modes */
+  src: url('fonts/iranyekanwebboldfanum.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/iranyekanwebboldfanum.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/iranyekanwebboldfanum.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/iranyekanwebboldfanum.svg#iranyekan') format('svg'); /* Legacy iOS */
+   font-weight:bold;
+}
+
+
 *, *:after, *:before {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "vazir" ;
+  font-family: "iranyekan" ;
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -12,6 +23,7 @@ body {
   justify-content: center;
   color: #393232;
   flex-wrap: wrap;
+  direction: rtl;
 }
 
 img {
@@ -21,7 +33,7 @@ img {
 
 .card-list {
   width: 90%;
-  max-width: 400px;
+  max-width: 600px ;
   margin: 5px;
 
   
