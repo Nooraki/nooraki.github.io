@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="h-full">
+  
+<!-- Mirrored from rexadev.ir/iresume/en/index.html by HTTrack Website Copier/3.x [XR&CO'2017], Sat, 25 Jan 2025 10:10:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="قالب HTML شخصی و رزومه" />
+    <title>iResume | آی رزومه</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/icons/apple-touch-icon-EN.png"
+    />
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="assets/icons/android-chrome-192x192-EN.png"
+    />
+    <link
+      rel="icon"
+      sizes="512x512"
+      href="assets/icons/android-chrome-512x512-EN.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32-EN.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/icons/favicon-16x16-EN.png"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+    <!-- Use the following file for development -->
+    <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+    <script>
+      if (localStorage.theme === 'dark' || (!'theme') in localStorage) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+
+  <body
+    class="mx-4 mb-4 bg-slate-50 text-slate-600 antialiased selection:bg-[#007bff] selection:text-white dark:bg-[#131313] dark:text-slate-400 sm:mx-6"
+  >
+    <div class="mx-auto max-w-7xl">
+      <header class="py-4">
+        <div class="flex items-center justify-between">
+          <button
+            id="toggleMenu"
+            data-toggle="false"
+            class="z-20 hover:cursor-pointer sm:hidden"
+          >
+            <svg
+              class="icon"
+              id="menuIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+            <svg
+              id="closeIcon"
+              class="icon hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <div class="hidden sm:flex sm:items-center ltr:pl-2 rtl:pr-2">
+            <!-- Add "index.html" if you are not using a local server or host -->
+            <a
+              href="external.html?link=https://rexadev.ir/en"
+              draggable="false"
+              class="flex items-center ltr:mr-6 rtl:ml-6"
+            >
+              <img
+                src="assets/images/logo-en.svg"
+                alt="iresume logo"
+                draggable="false"
+                class="drag-none h-9 w-auto rounded-lg ltr:mr-2 rtl:ml-2"
+              />
+              <img
+                src="assets/images/logo-text-en.svg"
+                alt="iresume logotype"
+                draggable="false"
+                class="drag-none h-5"
+              />
+            </a>
+            <nav>
+              <ul class="flex items-center gap-x-4">
+                <li>
+                  <a
+                    href="#Link1"
+                    class="font-medium leading-normal text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                    target="_blank"
+                    >Link 1</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#Link2"
+                    class="font-medium leading-normal text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                    target="_blank"
+                    >Link 2</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#Link3"
+                    class="font-medium leading-normal text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                    target="_blank"
+                    >Link 3</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div
+            class="flex flex-row-reverse items-center ltr:gap-x-1 rtl:gap-x-2"
+          >
+            <button id="toggleDarkMode">
+              <svg
+                class="icon hidden"
+                id="moonIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+              <svg
+                class="icon hidden"
+                id="sunIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </button>
+            <!-- Add "index.html" if you are not using a local server or host -->
+            <a href="external.html?link=https://rexadev.ir/" class="h-6 text-lg font-black">
+              <p class="icon select-none text-center">فا</p>
+            </a>
+          </div>
+        </div>
+        <nav
+          id="mobileMenu"
+          class="mb-2 mt-4 hidden sm:hidden ltr:ml-2.5 rtl:mr-2.5"
+        >
+          <ul
+            class="space-y-4 border-slate-200 dark:border-slate-700 ltr:border-l rtl:border-r"
+          >
+            <li>
+              <a
+                href="#Link1"
+                class="block text-base font-medium text-slate-600 hover:border-slate-700 hover:text-slate-900 focus:border-slate-700 dark:text-slate-400 dark:hover:border-slate-200 dark:hover:text-slate-200 ltr:pl-4 ltr:hover:border-l-2 ltr:focus:border-l-2 rtl:pr-4 rtl:hover:border-r-2 rtl:focus:border-r-2"
+                target="_blank"
+                >Link 1</a
+              >
+            </li>
+            <li>
+              <a
+                href="#Link2"
+                class="block text-base font-medium text-slate-600 hover:border-slate-700 hover:text-slate-900 focus:border-slate-700 dark:text-slate-400 dark:hover:border-slate-200 dark:hover:text-slate-200 ltr:pl-4 ltr:hover:border-l-2 ltr:focus:border-l-2 rtl:pr-4 rtl:hover:border-r-2 rtl:focus:border-r-2"
+                target="_blank"
+                >Link 2</a
+              >
+            </li>
+            <li>
+              <a
+                href="#Link3"
+                class="block text-base font-medium text-slate-600 hover:border-slate-700 hover:text-slate-900 focus:border-slate-700 dark:text-slate-400 dark:hover:border-slate-200 dark:hover:text-slate-200 ltr:pl-4 ltr:hover:border-l-2 ltr:focus:border-l-2 rtl:pr-4 rtl:hover:border-r-2 rtl:focus:border-r-2"
+                target="_blank"
+                >Link 3</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div
+        class="flex flex-col rounded-3xl bg-white shadow-md dark:bg-zinc-900 lg:flex-row"
+      >
+        <aside class="rounded-3xl bg-secondary p-8 dark:bg-gray-800">
+          <div
+            class="sm:items-unset flex flex-col items-center justify-center lg:sticky lg:top-8 lg:w-[16rem]"
+          >
+            <div
+              class="animate-fadeInUp mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-around lg:flex-col"
+            >
+              <div class="max-w-[16rem] text-center">
+                <!-- Profile Picture / تصویر پروفایل -->
+                <img
+                  src="assets/images/profile.png"
+                  alt="a faceless man"
+                  class="mb-6 w-full max-w-[250px]"
+                />
+                <!-- Fullname / نام کامل -->
+                <h1 class="mb-2 text-2xl font-medium text-slate-200">
+                  John Doe
+                </h1>
+                <div class="mb-2 flex flex-wrap justify-center">
+                  <!-- Tags / عناوین-->
+                  <span class="tag">Photographer</span>
+                  <span class="tag">M.F.A</span>
+                </div>
+                <div class="mb-4 flex flex-row-reverse justify-center">
+                  <!-- Instagram page / صفحه اینستاگرام -->
+                  <a href="#">
+                    <svg
+                      class="icon m-1 text-slate-300 hover:text-slate-100"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg
+                  ></a>
+                  <!-- Twitter page / صفحه توییتر -->
+                  <a href="#">
+                    <svg
+                      class="icon m-1 text-slate-300 hover:text-slate-100"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                      /></svg
+                  ></a>
+                  <!-- Linkedin page / صفحه لینکدین -->
+                  <a href="#">
+                    <svg
+                      class="icon m-1 text-slate-300 hover:text-slate-100"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                      />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <!-- Personal Information / اطاعات شخصی -->
+              <table
+                class="mb-4 w-full max-w-[250px] text-sm text-slate-300 sm:m-0 lg:mb-4"
+              >
+                <tbody>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Gender</td>
+                    <td class="ltr:text-right rtl:text-left">Male</td>
+                  </tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Marital Status</td>
+                    <td class="ltr:text-right rtl:text-left">Single</td>
+                  </tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">
+                      Military Service Status
+                    </td>
+                    <td class="ltr:text-right rtl:text-left">
+                      Educational Exemption
+                    </td>
+                  </tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Date of Birth</td>
+                    <td class="ltr:text-right rtl:text-left">2022-1-1</td>
+                  </tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Nationality</td>
+                    <td class="ltr:text-right rtl:text-left">Iranian</td>
+                  </tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Location</td>
+                    <td class="ltr:text-right rtl:text-left">Tehran, Iran</td>
+                  </tr>
+                  <tr
+                    class="border-1 mx-auto mb-4 block w-1/2 border-t border-slate-700 dark:border-slate-600"
+                  ></tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">
+                      Expected Salary
+                    </td>
+                    <td class="ltr:text-right rtl:text-left">Not Specified</td>
+                  </tr>
+                  <tr
+                    class="border-1 mx-auto mb-4 block w-1/2 border-t border-slate-700 dark:border-slate-600"
+                  ></tr>
+                  <tr class="mb-4 flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">Phone</td>
+                    <td class="ltr:text-right rtl:text-left">09xx-xxx-xxxx</td>
+                  </tr>
+                  <tr class="flex justify-between">
+                    <td class="ltr:text-left rtl:text-right">E-mail</td>
+                    <td class="ltr:text-right rtl:text-left">
+                      example@example.com
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Resume Pdf File Link / لینک فایل پی دی اف رزومه -->
+            <a href="#" class="btn-cta inline-block align-middle">
+              DOWNLOAD RESUME FILE
+            </a>
+          </div>
+        </aside>
+        <main
+          class="animate-fadeInUp rounded-3xl bg-white p-6 dark:bg-zinc-900/90 lg:px-10 lg:py-8"
+        >
+          <!-- About Me (Biography) / درباره من (بیوگرافی) -->
+          <div class="mb-10">
+            <div
+              class="mb-2 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Biography</h2>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </p>
+          </div>
+          <!-- Work Exprience / سوابق کاری -->
+          <div class="mb-10">
+            <div
+              class="mb-4 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Exprience</h2>
+            </div>
+            <!-- Sort: Newest to Oldest / مرتب سازی: جدیدترین تا قدیمی ترین -->
+            <ul class="exp-menu-container">
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The First Title
+                  </div>
+                  <div class="text-sm text-slate-500">2015 — 2018</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The Second Title
+                  </div>
+                  <div class="text-sm text-slate-500">2018 — 2020</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The Third Title
+                  </div>
+                  <div class="text-sm text-slate-500">2020 — Present</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Educational Background / سوابق تحصیلی -->
+          <div class="mb-10">
+            <div
+              class="mb-4 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Education</h2>
+            </div>
+            <!-- Sort: Newest to Oldest / مرتب سازی: جدیدترین تا قدیمی ترین -->
+            <ul class="exp-menu-container">
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The First Title
+                  </div>
+                  <div class="text-sm text-slate-500">2015 — 2018</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The Second Title
+                  </div>
+                  <div class="text-sm text-slate-500">2018 — 2020</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+              <li class="exp-menu-item">
+                <div class="relative top-[-0.35rem] ltr:pl-4 rtl:pr-4">
+                  <div
+                    class="mb-2 text-xl font-semibold text-slate-700 dark:text-slate-400"
+                  >
+                    The Third Title
+                  </div>
+                  <div class="text-sm text-slate-500">2020 — Current</div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- The Skills / مهارت ها -->
+          <div class="mb-10">
+            <div
+              class="mb-4 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Skills</h2>
+            </div>
+            <div class="grid-cols1 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Photography</span
+                >
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 90%">
+                    <span class="px-2">90%</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Camerawork</span
+                >
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 80%">
+                    <span class="px-2">80%</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Adobe Photoshop</span
+                >
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 80%">
+                    <span class="px-2">80%</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Adobe Premiere</span
+                >
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 70%">
+                    <span class="px-2">70%</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Adobe After Effects
+                </span>
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 60%">
+                    <span class="px-2">60%</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span
+                  class="text-md mb-2 inline-block font-medium text-slate-700 dark:text-slate-400"
+                  >Analysis</span
+                >
+                <div class="w-full rounded-full bg-primary/25">
+                  <div class="progress-bar" style="width: 90%">
+                    <span class="px-2">90%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The Languages / زبان ها -->
+          <div class="mb-10">
+            <div
+              class="mb-4 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="external.html?link=http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Languages</h2>
+            </div>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-md pl-2 font-medium text-slate-700 dark:text-slate-400"
+                  >Persian</span
+                >
+                <ul class="dot-container">
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-md pl-2 font-medium text-slate-700 dark:text-slate-400"
+                  >English</span
+                >
+                <ul class="dot-container">
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot-null"></li>
+                  <li class="dot-null"></li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-md pl-2 font-medium text-slate-700 dark:text-slate-400"
+                  >Arabic</span
+                >
+                <ul class="dot-container">
+                  <li class="dot"></li>
+                  <li class="dot"></li>
+                  <li class="dot-null"></li>
+                  <li class="dot-null"></li>
+                  <li class="dot-null"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- The Favorites(Hobbies) / علاقه مندی ها -->
+          <div class="mb-10">
+            <div
+              class="mb-2 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="external.html?link=http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold dark:text-slate-200">
+                Favorites
+              </h2>
+            </div>
+            <div class="flex flex-wrap">
+              <span class="favorite-item">Learning</span>
+              <span class="favorite-item">Classical Music</span>
+              <span class="favorite-item">Design and create a work of art</span>
+              <span class="favorite-item">Team work</span>
+              <span class="favorite-item">Creativity</span>
+            </div>
+          </div>
+          <!-- Work Samples / نمونه کارها -->
+          <div class="mb-4">
+            <div
+              class="mb-4 flex items-center text-slate-900 dark:text-slate-200"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="external.html?link=http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+              <h2 class="mx-2 text-2xl font-bold">Projects</h2>
+            </div>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <a href="#showModal1" class="btn-modal">
+                <img
+                  data-href="#showModal1"
+                  src="assets/images/cover.jpg"
+                  class="rounded-[2rem]"
+                  alt="A wallpaper"
+                />
+              </a>
+              <a href="#showModal2" class="btn-modal">
+                <img
+                  data-href="#showModal2"
+                  src="assets/images/cover.jpg"
+                  class="rounded-[2rem]"
+                  alt="A wallpaper"
+                />
+              </a>
+              <a href="#showModal3" class="btn-modal">
+                <img
+                  data-href="#showModal3"
+                  src="assets/images/cover.jpg"
+                  class="rounded-[2rem]"
+                  alt="A wallpaper"
+                />
+              </a>
+            </div>
+            <!-- Modals -->
+            <div
+              id="showModal1"
+              class="modal fixed inset-0 z-30 hidden overflow-y-auto"
+            >
+              <div
+                class="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0"
+              >
+                <div
+                  class="modal-area fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity"
+                ></div>
+                <span class="hidden sm:inline-block sm:h-screen sm:align-middle"
+                  >&#8203;</span
+                >
+                <div
+                  class="relative inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl sm:align-middle"
+                >
+                  <div
+                    class="flex items-center justify-between rounded-t border-b p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-slate-200 lg:text-2xl"
+                    >
+                      The First Porject
+                    </h3>
+                    <button
+                      type="button"
+                      class="btn-close inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-slate-400 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-600 dark:hover:text-white ltr:ml-auto rtl:mr-auto"
+                      data-modal-toggle="defaultModal"
+                    >
+                      <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="space-y-6 p-6 dark:bg-zinc-900">
+                    <img
+                      src="assets/images/cover.jpg"
+                      class="rounded-[2rem]"
+                      alt="A music streaming mobile app design"
+                    />
+                    <p
+                      class="leading-relaxed text-slate-600 dark:text-slate-400 ltr:text-left rtl:text-right"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center space-x-2 rounded-b border-t border-slate-200 p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <a
+                      href="#"
+                      class="flex w-full flex-row-reverse items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-[500] text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 sm:w-auto"
+                    >
+                      <p class="font-sans">DOWNLOAD FILE</p>
+                      <svg
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                        class="ltr:mr-2 rtl:ml-2"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="showModal2"
+              class="modal fixed inset-0 z-30 hidden overflow-y-auto"
+            >
+              <div
+                class="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0"
+              >
+                <div
+                  class="modal-area fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity"
+                ></div>
+                <span class="hidden sm:inline-block sm:h-screen sm:align-middle"
+                  >&#8203;</span
+                >
+                <div
+                  class="relative inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl sm:align-middle"
+                >
+                  <div
+                    class="flex items-center justify-between rounded-t border-b p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-slate-200 lg:text-2xl"
+                    >
+                      The Second Project
+                    </h3>
+                    <button
+                      type="button"
+                      class="btn-close inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-slate-400 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-600 dark:hover:text-white ltr:ml-auto rtl:mr-auto"
+                      data-modal-toggle="defaultModal"
+                    >
+                      <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="space-y-6 p-6 dark:bg-zinc-900">
+                    <img
+                      src="assets/images/cover.jpg"
+                      class="rounded-[2rem]"
+                      alt="A music streaming mobile app design"
+                    />
+                    <p
+                      class="leading-relaxed text-slate-600 dark:text-slate-400 ltr:text-left rtl:text-right"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center space-x-2 rounded-b border-t border-slate-200 p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <a
+                      href="#"
+                      class="flex w-full flex-row-reverse items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-[500] text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 sm:w-auto"
+                    >
+                      <p class="font-sans">DOWNLOAD FILE</p>
+                      <svg
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                        class="ltr:mr-2 rtl:ml-2"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="showModal3"
+              class="modal fixed inset-0 z-30 hidden overflow-y-auto"
+            >
+              <div
+                class="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0"
+              >
+                <div
+                  class="modal-area fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity"
+                ></div>
+                <span class="hidden sm:inline-block sm:h-screen sm:align-middle"
+                  >&#8203;</span
+                >
+                <div
+                  class="relative inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl sm:align-middle"
+                >
+                  <div
+                    class="flex items-center justify-between rounded-t border-b p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-slate-200 lg:text-2xl"
+                    >
+                      The Third Project
+                    </h3>
+                    <button
+                      type="button"
+                      class="btn-close inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-slate-400 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-600 dark:hover:text-white ltr:ml-auto rtl:mr-auto"
+                      data-modal-toggle="defaultModal"
+                    >
+                      <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="space-y-6 p-6 dark:bg-zinc-900">
+                    <img
+                      src="assets/images/cover.jpg"
+                      class="rounded-[2rem]"
+                      alt="A music streaming mobile app design"
+                    />
+                    <p
+                      class="leading-relaxed text-slate-600 dark:text-slate-400 ltr:text-left rtl:text-right"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center space-x-2 rounded-b border-t border-slate-200 p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <a
+                      href="#"
+                      class="flex w-full flex-row-reverse items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-[500] text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 sm:w-auto"
+                    >
+                      <p class="font-sans">DOWNLOAD FILE</p>
+                      <svg
+                        xmlns="external.html?link=http://www.w3.org/2000/svg"
+                        class="ltr:mr-2 rtl:ml-2"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer class="mx-auto py-8 text-center">
+        <p class="ltr text-slate-500">Copyright © ? — All rights reserved.</p>
+      </footer>
+    </div>
+    <script src="assets/js/main.min.js" defer></script>
+  </body>
+
+<!-- Mirrored from rexadev.ir/iresume/en/index.html by HTTrack Website Copier/3.x [XR&CO'2017], Sat, 25 Jan 2025 10:10:21 GMT -->
+</html>
