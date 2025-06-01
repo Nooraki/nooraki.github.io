@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammadreza Nooraki - Web & Digital Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --border: #e0e0e0;
+            --success: #27ae60;
+            --card-bg: #ffffff;
+            --section-bg: #f8fafc;
+        }
+        
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--primary), #1a6ca6);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            background: var(--section-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .profile-img i {
+            font-size: 70px;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+        }
+        
+        .card {
+            padding: 30px;
+            border-bottom: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+        
+        .card:nth-child(even) {
+            background: var(--section-bg);
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .card-title i {
+            background: rgba(52, 152, 219, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .personal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .detail-item {
+            margin-bottom: 18px;
+            display: flex;
+            font-size: 1.1rem;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            min-width: 180px;
+            color: var(--secondary);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+        }
+        
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: -8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .timeline-date {
+            background: rgba(52, 152, 219, 0.1);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        .timeline-content {
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .skill-percent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        .languages, .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .lang-item, .interest-item {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .lang-item:hover, .interest-item:hover {
+            transform: translateY(-3px);
+            background: rgba(52, 152, 219, 0.2);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .portfolio-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            height: 220px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-item i {
+            font-size: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+        
+        .portfolio-title {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+        
+        .portfolio-item::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.2) 100%);
+            z-index: 1;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 1rem;
+        }
+        
+        .copyright {
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .card {
+                padding: 25px 20px;
+            }
+            
+            .card-title {
+                font-size: 1.6rem;
+            }
+            
+            .personal-details, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Mohammadreza Nooraki</h1>
+            <div class="subtitle">Web & Digital Designer</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>0905-978-0482</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>noorakimohammadrezamail@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Gonabad, Razavi Khorasan, Iran</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-user"></i>
+                <h2>Personal Information</h2>
+            </div>
+            
+            <div class="personal-details">
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-label">Gender:</div>
+                        <div>Male</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Marital Status:</div>
+                        <div>Single</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Date of Birth:</div>
+                        <div>December 4, 2000</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-label">Military Status:</div>
+                        <div>Exempt</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Nationality:</div>
+                        <div>Iranian</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Salary Expectation:</div>
+                        <div>Negotiable</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-book"></i>
+                <h2>Biography</h2>
+            </div>
+            
+            <p class="timeline-content">
+                Mohammadreza Nooraki was born in December 2000 in Gonabad. After completing elementary and middle school, he studied experimental sciences in high school. After the university entrance exam, he changed his field of study and pursued Jurisprudence and Law at Motahhari University. After completing his bachelor's degree, he served as a soldier in the military. The continuation of his life story is yet to be written.
+            </p>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-briefcase"></i>
+                <h2>Work Experience</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 — 2021</div>
+                    <div class="timeline-title">Freelancing</div>
+                    <p class="timeline-content">
+                        During his studies, he worked as a freelancer in digital arts, specializing in design with graphic software.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 — 2022</div>
+                    <div class="timeline-title">Journalism</div>
+                    <p class="timeline-content">
+                        Worked for one year at "Nameh Gonabad" newspaper as a designer and administrator.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Education</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2007 — 2019</div>
+                    <div class="timeline-title">School</div>
+                    <p class="timeline-content">
+                        Completed preschool and elementary school at Shahid Akhoundzadeh School, and middle school and high school at Shahid Beheshti School.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 — 2023</div>
+                    <div class="timeline-title">University</div>
+                    <p class="timeline-content">
+                        After the university entrance exam, he changed his field due to interest and studied Jurisprudence and Law at Shahid Motahhari University.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 — Present</div>
+                    <div class="timeline-title">Currently Learning</div>
+                    <p class="timeline-content">
+                        Continuously learning and developing new skills in web and digital design.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Skills</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Adobe Photoshop</div>
+                            <div class="skill-percent">70%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Adobe Illustrator</div>
+                            <div class="skill-percent">30%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">After Effects</div>
+                            <div class="skill-percent">50%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Premiere Pro</div>
+                            <div class="skill-percent">20%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">InDesign</div>
+                            <div class="skill-percent">90%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Web Design</div>
+                            <div class="skill-percent">80%</div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-globe"></i>
+                <h2>Languages</h2>
+            </div>
+            
+            <div class="languages">
+                <div class="lang-item">Persian (Native)</div>
+                <div class="lang-item">English</div>
+                <div class="lang-item">Arabic</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-heart"></i>
+                <h2>Interests</h2>
+            </div>
+            
+            <div class="interests">
+                <div class="interest-item">Learning</div>
+                <div class="interest-item">Quran & Hadith</div>
+                <div class="interest-item">Design & Art Creation</div>
+                <div class="interest-item">Cyber Crimes</div>
+                <div class="interest-item">Creativity</div>
+                <div class="interest-item">Cryptocurrencies</div>
+                <div class="interest-item">Artificial Intelligence</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-images"></i>
+                <h2>Portfolio</h2>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <i class="fas fa-image"></i>
+                    <div class="portfolio-title">Wallpaper Design</div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <i class="fas fa-image"></i>
+                    <div class="portfolio-title">Wallpaper Design</div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div class="portfolio-title">Web Design Project</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Copyright © MohammadReza Nooraki — All rights reserved</p>
+            <div class="copyright">Designed and developed by Mohammadreza Nooraki</div>
+        </footer>
+    </div>
+</body>
+</html>
