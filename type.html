@@ -6,7 +6,7 @@
     <title>سامانه حرفه‌ای محاسبه قیمت تایپ</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         :root {
             --primary: #3498db;
@@ -22,14 +22,14 @@
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --radius: 12px;
         }
-
+        
         * {
             font-family: Vazirmatn, sans-serif;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
+        
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
             min-height: 100vh;
@@ -37,7 +37,7 @@
             color: var(--dark);
             line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -47,38 +47,38 @@
             overflow: hidden;
             position: relative;
         }
-
+        
         header {
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             color: white;
             padding: 30px;
             text-align: center;
-            position: relative; /* Kept for potential future absolutely positioned elements */
+            position: relative;
         }
-
+        
         .header-content {
             max-width: 800px;
             margin: 0 auto;
         }
-
+        
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
+        
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-top: 10px;
         }
-
+        
         .card {
             padding: 30px;
             border-bottom: 1px solid var(--border);
             transition: var(--transition);
         }
-
+        
         .card-title {
             display: flex;
             align-items: center;
@@ -86,7 +86,7 @@
             color: var(--secondary);
             font-size: 1.5rem;
         }
-
+        
         .card-title i {
             background: rgba(52, 152, 219, 0.1);
             width: 50px;
@@ -100,18 +100,18 @@
             transition: var(--transition);
             font-size: 1.2rem;
         }
-
+        
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
-
+        
         .form-group {
             margin-bottom: 25px;
             position: relative;
         }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 12px;
@@ -121,11 +121,11 @@
             display: flex;
             align-items: center;
         }
-
+        
         .form-group label i {
             margin-left: 8px;
         }
-
+        
         .form-control {
             width: 100%;
             padding: 15px;
@@ -135,25 +135,25 @@
             transition: var(--transition);
             background: #fff;
         }
-
+        
         .form-control:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
-
+        
         .form-control.invalid {
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
         }
-
+        
         .error-message {
             color: var(--accent);
             font-size: 0.85rem;
             margin-top: 8px;
             display: none;
         }
-
+        
         .service-type {
             display: flex;
             justify-content: center;
@@ -161,7 +161,7 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-
+        
         .service-type-btn {
             padding: 20px;
             background: #e9ecef;
@@ -177,30 +177,30 @@
             flex-direction: column;
             align-items: center;
         }
-
+        
         .service-type-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
-
+        
         .service-type-btn.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
             box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
         }
-
+        
         .service-type-btn i {
             font-size: 2.5rem;
             margin-bottom: 15px;
         }
-
+        
         .price-factors {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
-
+        
         .factor-item {
             background: #f8f9fa;
             padding: 20px;
@@ -210,19 +210,19 @@
             cursor: pointer;
             user-select: none;
         }
-
+        
         .factor-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             border-color: var(--primary);
         }
-
+        
         .factor-item.selected {
             border-color: var(--primary);
             background: rgba(52, 152, 219, 0.05);
             box-shadow: 0 5px 20px rgba(52, 152, 219, 0.15);
         }
-
+        
         .factor-title {
             display: flex;
             align-items: center;
@@ -231,18 +231,18 @@
             color: var(--secondary);
             font-size: 1.1rem;
         }
-
+        
         .factor-title i {
             margin-left: 10px;
             color: var(--primary);
         }
-
+        
         .factor-price {
             color: var(--accent);
             font-weight: bold;
             font-size: 1rem;
         }
-
+        
         .result-box {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 30px;
@@ -252,7 +252,7 @@
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
-
+        
         .result-row {
             display: flex;
             justify-content: space-between;
@@ -260,7 +260,7 @@
             border-bottom: 1px dashed var(--border);
             font-size: 1.1rem;
         }
-
+        
         .discount-row {
             background: rgba(39, 174, 96, 0.1);
             border-radius: var(--radius);
@@ -272,20 +272,20 @@
             justify-content: space-between;
             font-size: 1.1rem;
         }
-
+        
         .price {
             font-size: 2rem;
             font-weight: bold;
             color: var(--accent);
         }
-
+        
         .summary {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 25px;
             margin-top: 30px;
         }
-
+        
         .summary-item {
             background: white;
             padding: 25px;
@@ -294,37 +294,37 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
+        
         .summary-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
-
+        
         .summary-title {
             font-size: 1.2rem;
             margin-bottom: 15px;
             color: var(--secondary);
         }
-
+        
         .summary-value {
             font-size: 2rem;
             font-weight: bold;
             color: var(--accent);
         }
-
+        
         .contact-box {
             background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
             padding: 30px;
             text-align: center;
             border-top: 1px solid #bbdefb;
         }
-
+        
         .contact-title {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
-
+        
         .telegram-link {
             display: inline-block;
             background: #0088cc;
@@ -338,17 +338,17 @@
             font-size: 1.1rem;
             box-shadow: 0 4px 10px rgba(0, 136, 204, 0.2);
         }
-
+        
         .telegram-link:hover {
             background: #0077b3;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 136, 204, 0.3);
         }
-
+        
         .telegram-link i {
             margin-left: 10px;
         }
-
+        
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -356,7 +356,7 @@
             gap: 20px;
             margin-top: 30px;
         }
-
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -372,21 +372,31 @@
             min-width: 220px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
+        
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
-
+        
         .btn-primary {
             background: var(--success);
             color: white;
         }
-
+        
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-tertiary {
+            background: var(--secondary);
+            color: white;
+        }
+        
         .btn i {
             margin-left: 10px;
         }
-
+        
         footer {
             background: var(--secondary);
             color: white;
@@ -394,100 +404,76 @@
             padding: 25px;
             font-size: 1rem;
         }
-
+        
         .time-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
+        
         .hidden {
             display: none;
         }
-
-        .invoice-info {
-            position: absolute;
-            bottom: 20px; /* Adjust if it overlaps with temporarily hidden buttons */
-            left: 30px;
-            background: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better image capture */
-            padding: 10px 20px;
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            /* display: none; */ /* Removed to make it visible by default */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10; /* Ensure it's above other elements in result-box if needed */
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--secondary);
-            color: white;
-            padding: 15px 30px;
-            border-radius: var(--radius);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: none;
-            font-size: 1rem;
-            max-width: 90%;
-            text-align: center;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .stat-item {
-            background: rgba(52, 152, 219, 0.05);
-            border: 1px solid rgba(52, 152, 219, 0.1);
-            border-radius: var(--radius);
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--secondary);
-            font-size: 1rem;
-        }
-
+        
+        /* Responsive design */
         @media (max-width: 992px) {
             .container {
                 max-width: 95%;
             }
+            
             .summary {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
         }
+        
         @media (max-width: 768px) {
-            .service-type { flex-direction: column; }
-            .service-type-btn { width: 100%; }
-            .form-grid { grid-template-columns: 1fr; }
-            .time-inputs { grid-template-columns: 1fr; }
-            .action-buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; }
+            .service-type {
+                flex-direction: column;
+            }
+            
+            .service-type-btn {
+                width: 100%;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
         }
+        
         @media (max-width: 480px) {
-            header { padding: 20px 15px; }
-            .card { padding: 20px 15px; }
-            h1 { font-size: 1.8rem; }
-            .subtitle { font-size: 1rem; }
-            .card-title { font-size: 1.3rem; }
+            header {
+                padding: 20px 15px;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -499,31 +485,42 @@
                 <p class="subtitle">محاسبه دقیق و آنی هزینه تایپ متنی و صوتی با بهترین کیفیت و قیمت</p>
             </div>
         </header>
-
+        
         <div class="card">
             <div class="card-title">
                 <i class="fas fa-keyboard"></i>
                 <h2>نوع خدمت مورد نیاز</h2>
             </div>
+            
             <div class="service-type">
                 <div class="service-type-btn active" id="textServiceBtn" onclick="selectService('text')">
-                    <i class="fas fa-file-alt"></i> تایپ متنی <small>اسناد، کتاب‌ها، مقالات</small>
+                    <i class="fas fa-file-alt"></i>
+                    تایپ متنی
+                    <small>اسناد، کتاب‌ها، مقالات</small>
                 </div>
                 <div class="service-type-btn" id="voiceServiceBtn" onclick="selectService('voice')">
-                    <i class="fas fa-microphone-alt"></i> تایپ صوتی <small>فایل‌های صوتی، مصاحبه‌ها، جلسات</small>
+                    <i class="fas fa-microphone-alt"></i>
+                    تایپ صوتی
+                    <small>فایل‌های صوتی، مصاحبه‌ها، جلسات</small>
                 </div>
             </div>
         </div>
-
+        
+        <!-- بخش تایپ متنی -->
         <div id="textTypingSection">
             <div class="card">
-                <div class="card-title"><i class="fas fa-edit"></i><h2>مشخصات سفارش تایپ متنی</h2></div>
+                <div class="card-title">
+                    <i class="fas fa-edit"></i>
+                    <h2>مشخصات سفارش تایپ متنی</h2>
+                </div>
+                
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="pages"><i class="fas fa-file"></i> تعداد صفحات:</label>
                         <input type="number" id="pages" min="1" value="5" class="form-control" placeholder="تعداد صفحات را وارد کنید">
                         <div class="error-message" id="pagesError">تعداد صفحات باید حداقل 1 باشد</div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="sourceType"><i class="fas fa-file-image"></i> نوع منبع:</label>
                         <select id="sourceType" class="form-control">
@@ -534,6 +531,7 @@
                             <option value="testQuestions">سوالات تستی چهارگزینه‌ای</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
                         <label for="urgent"><i class="fas fa-bolt"></i> زمان تحویل:</label>
                         <select id="urgent" class="form-control">
@@ -541,47 +539,72 @@
                             <option value="urgent">تحویل فوری (2 برابر هزینه)</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
                         <label for="englishTerms"><i class="fas fa-language"></i> اصطلاحات انگلیسی:</label>
                         <input type="number" id="englishTerms" min="0" value="0" class="form-control" placeholder="تعداد کلمات انگلیسی در هر صفحه">
-                        <div class="error-message" id="englishTermsError">تعداد باید عددی غیرمنفی باشد</div>
+                        <div class="error-message" id="englishTermsError">تعداد باید عددی مثبت باشد</div>
                     </div>
                 </div>
             </div>
+            
             <div class="card">
-                <div class="card-title"><i class="fas fa-tags"></i><h2>موارد افزایش قیمت تایپ متنی</h2></div>
+                <div class="card-title">
+                    <i class="fas fa-tags"></i>
+                    <h2>موارد افزایش قیمت تایپ متنی</h2>
+                </div>
+                
                 <p style="margin-bottom: 20px; color: #666; text-align: center;">موارد زیر را در صورت نیاز انتخاب کنید:</p>
+                
                 <div class="price-factors">
                     <div class="factor-item" onclick="toggleFactor(this, 'arabicText')">
-                        <div class="factor-title"><i class="fas fa-language"></i><span>متن فارسی-عربی</span></div>
+                        <div class="factor-title">
+                            <i class="fas fa-language"></i>
+                            <span>متن فارسی-عربی</span>
+                        </div>
                         <div class="factor-price">+10,800 تومان برای هر صفحه</div>
                     </div>
+                    
                     <div class="factor-item" onclick="toggleFactor(this, 'addImages')">
-                        <div class="factor-title"><i class="fas fa-image"></i><span>افزودن عکس به صفحات</span></div>
+                        <div class="factor-title">
+                            <i class="fas fa-image"></i>
+                            <span>افزودن عکس به صفحات</span>
+                        </div>
                         <div class="factor-price">+10,800 تومان برای هر صفحه</div>
                     </div>
+                    
                     <div class="factor-item" onclick="toggleFactor(this, 'specializedField')">
-                        <div class="factor-title"><i class="fas fa-graduation-cap"></i><span>زمینه تخصصی</span></div>
+                        <div class="factor-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>زمینه تخصصی</span>
+                        </div>
                         <div class="factor-price">+1,200 تومان برای هر صفحه</div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
+        <!-- بخش تایپ صوتی -->
         <div id="voiceTypingSection" class="hidden">
             <div class="card">
-                <div class="card-title"><i class="fas fa-microphone-alt"></i><h2>مشخصات سفارش تایپ صوتی</h2></div>
+                <div class="card-title">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h2>مشخصات سفارش تایپ صوتی</h2>
+                </div>
+                
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="hours"><i class="fas fa-clock"></i> مدت زمان (ساعت):</label>
                         <input type="number" id="hours" min="0" value="0" class="form-control" placeholder="تعداد ساعت را وارد کنید">
-                        <div class="error-message" id="hoursError">تعداد باید عددی غیرمنفی باشد</div>
+                        <div class="error-message" id="hoursError">تعداد باید عددی مثبت باشد</div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="minutes"><i class="fas fa-hourglass-half"></i> مدت زمان (دقیقه):</label>
                         <input type="number" id="minutes" min="0" max="59" value="30" class="form-control" placeholder="تعداد دقیقه را وارد کنید">
                         <div class="error-message" id="minutesError">باید بین 0 تا 59 باشد</div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="audioQuality"><i class="fas fa-volume-up"></i> کیفیت صوت:</label>
                         <select id="audioQuality" class="form-control">
@@ -590,6 +613,7 @@
                             <option value="multipleSpeakers">چند گوینده</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
                         <label for="audioUrgent"><i class="fas fa-bolt"></i> زمان تحویل:</label>
                         <select id="audioUrgent" class="form-control">
@@ -600,65 +624,65 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="card">
-            <div class="card-title"><i class="fas fa-file-invoice-dollar"></i><h2>نتیجه محاسبه قیمت</h2></div>
+            <div class="card-title">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h2>نتیجه محاسبه قیمت</h2>
+            </div>
+            
             <div class="result-box" id="resultBox">
-                <div class="invoice-info" id="invoiceInfo">
-                    <div>شماره فاکتور: <span id="invoiceNumberDisplay"></span></div>
-                    <div>تاریخ: <span id="invoiceDateDisplay"></span></div>
-                </div>
                 <div class="result-row">
-                    <span id="serviceTypeLabel">نوع خدمت:</span><span id="serviceTypeValue">تایپ متنی</span>
+                    <span id="serviceTypeLabel">نوع خدمت:</span>
+                    <span id="serviceTypeValue">تایپ متنی</span>
                 </div>
+                
                 <div class="result-row">
-                    <span id="amountLabel">تعداد صفحات:</span><span id="amountValue">5 صفحه</span>
+                    <span id="amountLabel">تعداد صفحات:</span>
+                    <span id="amountValue">5 صفحه</span>
                 </div>
+                
                 <div class="result-row">
-                    <span>هزینه پایه:</span><span id="basePrice">23,250 تومان</span>
+                    <span>هزینه پایه:</span>
+                    <span id="basePrice">23,250 تومان</span>
                 </div>
+                
                 <div id="discountContainer" style="display: none;">
                     <div class="discount-row">
-                        <span id="discountLabel">تخفیف حجمی:</span><span id="discountAmount">0 تومان</span>
+                        <span id="discountLabel">تخفیف حجمی:</span>
+                        <span id="discountAmount">0 تومان</span>
                     </div>
                 </div>
-                <div id="extraCostsContainer"></div>
-                <div class="result-row">
-                    <span>زمان تحویل:</span><span id="deliveryTime">1 روز کاری</span>
+                
+                <div id="extraCostsContainer">
+                    <!-- هزینه‌های اضافی با دلیل نمایش داده می‌شوند -->
                 </div>
+                
+                <div class="result-row">
+                    <span>زمان تحویل:</span>
+                    <span id="deliveryTime">1 روز کاری</span>
+                </div>
+                
                 <div class="summary">
                     <div class="summary-item">
                         <div class="summary-title">مبلغ نهایی</div>
                         <div class="summary-value"><span id="totalPrice">23,250</span> تومان</div>
                     </div>
+                    
                     <div class="summary-item">
                         <div class="summary-title">پیش‌پرداخت (70%)</div>
                         <div class="summary-value"><span id="prepayment">16,275</span> تومان</div>
                     </div>
                 </div>
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalSaved">0</div>
-                        <div class="stat-label">تخفیف دریافتی</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalPages">0</div>
-                        <div class="stat-label">مجموع صفحات تایپ شده</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalMinutes">0</div>
-                        <div class="stat-label">دقیقه صوتی تایپ شده</div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button id="downloadBtn" class="btn btn-primary">
-                        <i class="fas fa-download"></i> دریافت فاکتور به صورت عکس
-                    </button>
-                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="downloadImageBtn" class="btn btn-primary">
+                    <i class="fas fa-download"></i> دانلود تصویر نتیجه
+                </button>
             </div>
         </div>
-
+        
         <div class="contact-box">
             <h3 class="contact-title"><i class="fas fa-paper-plane"></i> برای ثبت سفارش با ما تماس بگیرید</h3>
             <a href="https://t.me/Wordtypist" class="telegram-link" target="_blank">
@@ -668,454 +692,441 @@
                 <i class="fas fa-phone"></i> تلفن تماس: ۰۲۱-۱۲۳۴۵۶۷۸
             </p>
         </div>
-
-        <footer><p>© ۱۴۰۲ سامانه محاسبه قیمت تایپ - تمامی حقوق محفوظ است</p></footer>
+        
+        <footer>
+            <p>© ۱۴۰۲ سامانه محاسبه قیمت تایپ - تمامی حقوق محفوظ است</p>
+        </footer>
     </div>
-
-    <div class="toast" id="toast"></div>
-
-
-</body>
-
-
-<script>
-    // تعرفه‌های پایه
-    const BASE_PRICE = 4650; // قیمت پایه برای هر صفحه تایپ متنی
-    const VOICE_PRICE_PER_HOUR = 200000; // قیمت پایه برای هر ساعت تایپ صوتی
-
-    // تخفیف‌های حجمی برای تایپ متنی
-    const textDiscounts = {
-        20: 0.08,    // بیشتر از 10 و تا 20 صفحه
-        40: 0.15,    // بیشتر از 20 و تا 40 صفحه
-        60: 0.22,    // بیشتر از 40 و تا 60 صفحه
-        80: 0.28,    // بیشتر از 60 و تا 80 صفحه
-        120: 0.33,   // بیشتر از 80 و تا 120 صفحه
-    };
-    const TEXT_DISCOUNT_ABOVE_120_PAGES_RATE = 0.40;
-
-    // تخفیف‌های حجمی برای تایپ صوتی (بر اساس ساعت)
-    const voiceDiscounts = {
-        2: 0.08,    // 2 ساعت و بیشتر
-        4: 0.15,    // 4 ساعت و بیشتر
-        6: 0.22,    // 6 ساعت و بیشتر
-        8: 0.28,    // 8 ساعت و بیشتر
-        12: 0.33,   // 12 ساعت و بیشتر
-        20: 0.40    // 20 ساعت و بیشتر
-    };
-
-    // هزینه‌های اضافی تایپ متنی برای هر صفحه (به جز موارد انتخابی و انگلیسی)
-    const textExtraSourcePrices = {
-        goodHandwriting: 7200,
-        badHandwriting: 10800,
-        lowQuality: 7200,
-        testQuestions: 12000
-    };
-
-    // هزینه‌های اضافی تایپ متنی برای هر صفحه (موارد انتخابی)
-    const textExtraFactorPrices = {
-        arabicText: 10800,
-        addImages: 10800,
-        specializedField: 1200
-    };
-    const ENGLISH_TERMS_EXTRA_PER_PAGE = 10800; // اگر بیش از 5 اصطلاح انگلیسی در صفحه باشد
-
-    // هزینه‌های اضافی تایپ صوتی (ضریب افزایش نسبت به هزینه پایه)
-    const voiceExtraQualityMultipliers = {
-        low: 0.5, // 50% افزایش
-        multipleSpeakers: 0.1 // 10% افزایش
-    };
-
-    const selectedFactors = {
-        arabicText: false,
-        addImages: false,
-        specializedField: false
-    };
-    let selectedService = 'text';
-
-    function showToast(message, type = 'success') {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.style.display = 'block';
-        toast.style.background = type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--accent)' : 'var(--secondary)';
-        setTimeout(() => { toast.style.display = 'none'; }, 3000);
-    }
-
-    function selectService(serviceType) {
-        selectedService = serviceType;
-        document.getElementById('textServiceBtn').classList.toggle('active', serviceType === 'text');
-        document.getElementById('voiceServiceBtn').classList.toggle('active', serviceType === 'voice');
-        document.getElementById('textTypingSection').classList.toggle('hidden', serviceType !== 'text');
-        document.getElementById('voiceTypingSection').classList.toggle('hidden', serviceType !== 'voice');
-        document.getElementById('serviceTypeValue').textContent = serviceType === 'text' ? 'تایپ متنی' : 'تایپ صوتی';
-        calculatePrice();
-    }
-
-    function toggleFactor(element, factor) {
-        selectedFactors[factor] = !selectedFactors[factor];
-        element.classList.toggle('selected', selectedFactors[factor]);
-        calculatePrice();
-    }
-
-    function calculatePrice() {
-        updateInvoiceDisplay(); // Update invoice details with every calculation
-        if (selectedService === 'text') calculateTextPrice();
-        else calculateVoicePrice();
-    }
-
-    function calculateTextPrice() {
-        const pagesInput = document.getElementById('pages');
-        const pagesError = document.getElementById('pagesError');
-        let pages = parseInt(pagesInput.value);
-        if (isNaN(pages) || pages < 1) {
-            pagesInput.classList.add('invalid'); pagesError.style.display = 'block'; pages = 0;
-        } else {
-            pagesInput.classList.remove('invalid'); pagesError.style.display = 'none';
+    
+    <script>
+        // تعرفه‌های پایه و اضافی
+        const BASE_PRICE = 4650;
+        const VOICE_PRICE_PER_HOUR = 200000;
+        
+        // تخفیف‌های حجمی برای تایپ متنی
+        const textDiscounts = {
+            20: 0.08,    // 8% تخفیف
+            40: 0.15,    // 15% تخفیف
+            60: 0.22,    // 22% تخفیف
+            80: 0.28,    // 28% تخفیف
+            120: 0.33,   // 33% تخفیف
+            200: 0.40    // 40% تخفیف
+        };
+        
+        // تخفیف‌های حجمی برای تایپ صوتی (بر اساس ساعت)
+        const voiceDiscounts = {
+            1: 0.08,    // 8% تخفیف برای 1 ساعت
+            2: 0.15,    // 15% تخفیف برای 2 ساعت
+            3: 0.22,    // 22% تخفیف برای 3 ساعت
+            4: 0.28,    // 28% تخفیف برای 4 ساعت
+            6: 0.33,    // 33% تخفیف برای 6 ساعت
+            10: 0.40    // 40% تخفیف برای 10 ساعت و بالاتر
+        };
+        
+        // حالت‌های انتخاب شده برای عوامل افزایش قیمت
+        const selectedFactors = {
+            arabicText: false,
+            addImages: false,
+            specializedField: false
+        };
+        
+        // نوع سرویس انتخاب شده (text یا voice)
+        let selectedService = 'text';
+        
+        // انتخاب نوع سرویس
+        function selectService(serviceType) {
+            selectedService = serviceType;
+            
+            // به‌روزرسانی دکمه‌ها
+            document.getElementById('textServiceBtn').classList.toggle('active', serviceType === 'text');
+            document.getElementById('voiceServiceBtn').classList.toggle('active', serviceType === 'voice');
+            
+            // نمایش بخش مرتبط
+            document.getElementById('textTypingSection').classList.toggle('hidden', serviceType !== 'text');
+            document.getElementById('voiceTypingSection').classList.toggle('hidden', serviceType !== 'voice');
+            
+            // به‌روزرسانی برچسب نوع خدمت
+            document.getElementById('serviceTypeValue').textContent = 
+                serviceType === 'text' ? 'تایپ متنی' : 'تایپ صوتی';
+            
+            calculatePrice();
         }
-
-        const sourceType = document.getElementById('sourceType').value;
-        const englishTermsInput = document.getElementById('englishTerms');
-        const englishTermsError = document.getElementById('englishTermsError');
-        let englishTermsPerPage = parseInt(englishTermsInput.value);
-        if (isNaN(englishTermsPerPage) || englishTermsPerPage < 0) { /* Changed validation for min="0" */
-            englishTermsInput.classList.add('invalid'); englishTermsError.style.display = 'block'; englishTermsPerPage = 0;
-        } else {
-            englishTermsInput.classList.remove('invalid'); englishTermsError.style.display = 'none';
+        
+        // تغییر وضعیت انتخاب یک عامل
+        function toggleFactor(element, factor) {
+            selectedFactors[factor] = !selectedFactors[factor];
+            element.classList.toggle('selected', selectedFactors[factor]);
+            calculatePrice();
         }
-        const isUrgent = document.getElementById('urgent').value === 'urgent';
-
-        let baseCost = pages * BASE_PRICE;
-
-        let discountRate = 0;
-        let discountAmount = 0;
-        const discountContainer = document.getElementById('discountContainer');
-        const discountLabel = document.getElementById('discountLabel');
-        discountContainer.style.display = 'none';
-
-        if (pages > 10) {
-            if (pages > 120) {
-                discountRate = TEXT_DISCOUNT_ABOVE_120_PAGES_RATE;
+        
+        // محاسبه قیمت
+        function calculatePrice() {
+            if (selectedService === 'text') {
+                calculateTextPrice();
             } else {
-                const sortedDiscountTiers = Object.keys(textDiscounts).map(Number).sort((a, b) => a - b);
-                for (const tierPages of sortedDiscountTiers) {
-                    if (pages <= tierPages) {
-                        discountRate = textDiscounts[tierPages];
-                        break;
-                    }
+                calculateVoicePrice();
+            }
+        }
+        
+        // محاسبه زمان تحویل برای تایپ متنی
+        function calculateTextDeliveryTime(pages, isUrgent) {
+            if (isUrgent) {
+                // در حالت فوری، هر روز معادل یک ساعت است
+                if (pages <= 10) return "1 ساعت کاری";
+                if (pages <= 20) return "2 ساعت کاری";
+                if (pages <= 40) return "3 ساعت کاری";
+                if (pages <= 60) return "4 ساعت کاری";
+                if (pages <= 80) return "5 ساعت کاری";
+                if (pages <= 120) return "6 ساعت کاری";
+                if (pages <= 200) return "7 ساعت کاری";
+                
+                // برای بیش از 200 صفحه، به ازای هر 100 صفحه یک ساعت اضافه می‌شود
+                const extraHours = Math.ceil((pages - 200) / 100);
+                return (7 + extraHours) + " ساعت کاری";
+            } else {
+                // حالت عادی
+                if (pages <= 10) return "1 روز کاری";
+                if (pages <= 20) return "2 روز کاری";
+                if (pages <= 40) return "3 روز کاری";
+                if (pages <= 60) return "4 روز کاری";
+                if (pages <= 80) return "5 روز کاری";
+                if (pages <= 120) return "6 روز کاری";
+                if (pages <= 200) return "7 روز کاری";
+                
+                // برای بیش از 200 صفحه، به ازای هر 100 صفحه یک روز اضافه می‌شود
+                const extraDays = Math.ceil((pages - 200) / 100);
+                return (7 + extraDays) + " روز کاری";
+            }
+        }
+        
+        // محاسبه زمان تحویل برای تایپ صوتی
+        function calculateVoiceDeliveryTime(minutes, isUrgent) {
+            const totalMinutes = minutes;
+            
+            if (isUrgent) {
+                // در حالت فوری، هر روز معادل یک ساعت است
+                if (totalMinutes <= 30) return "30 دقیقه کاری";
+                if (totalMinutes <= 60) return "1 ساعت کاری";
+                if (totalMinutes <= 120) return "2 ساعت کاری";
+                if (totalMinutes <= 180) return "3 ساعت کاری";
+                if (totalMinutes <= 240) return "4 ساعت کاری";
+                if (totalMinutes <= 360) return "6 ساعت کاری";
+                if (totalMinutes <= 600) return "10 ساعت کاری";
+                
+                // برای بیش از 10 ساعت، به ازای هر 2 ساعت یک ساعت اضافه می‌شود
+                const extraHours = Math.ceil((totalMinutes - 600) / 120);
+                return (10 + extraHours) + " ساعت کاری";
+            } else {
+                // حالت عادی
+                if (totalMinutes <= 30) return "1 روز کاری";
+                if (totalMinutes <= 60) return "2 روز کاری";
+                if (totalMinutes <= 120) return "3 روز کاری";
+                if (totalMinutes <= 180) return "4 روز کاری";
+                if (totalMinutes <= 240) return "5 روز کاری";
+                if (totalMinutes <= 360) return "6 روز کاری";
+                if (totalMinutes <= 600) return "7 روز کاری";
+                
+                // برای بیش از 10 ساعت، به ازای هر 2 ساعت یک روز اضافه می‌شود
+                const extraDays = Math.ceil((totalMinutes - 600) / 120);
+                return (7 + extraDays) + " روز کاری";
+            }
+        }
+        
+        // محاسبه قیمت تایپ متنی
+        function calculateTextPrice() {
+            // دریافت مقادیر ورودی
+            const pages = parseInt(document.getElementById('pages').value) || 0;
+            const sourceType = document.getElementById('sourceType').value;
+            const englishTerms = parseInt(document.getElementById('englishTerms').value) || 0;
+            const isUrgent = document.getElementById('urgent').value === 'urgent';
+            
+            // محاسبه هزینه پایه
+            let baseCost = pages * BASE_PRICE;
+            
+            // محاسبه تخفیف حجمی
+            let discountRate = 0;
+            let discountAmount = 0;
+            let discountContainer = document.getElementById('discountContainer');
+            let discountLabel = document.getElementById('discountLabel');
+            
+            // پیدا کردن تخفیف مناسب بر اساس تعداد صفحات
+            for (const [maxPages, rate] of Object.entries(textDiscounts)) {
+                if (pages > 10 && pages <= maxPages) {
+                    discountRate = rate;
+                    discountAmount = Math.floor(baseCost * discountRate);
+                    discountContainer.style.display = 'block';
+                    discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
+                    break;
+                } else if (pages > 200) {
+                    discountRate = textDiscounts[200];
+                    discountAmount = Math.floor(baseCost * discountRate);
+                    discountContainer.style.display = 'block';
+                    discountLabel.textContent = `تخفیف 40% (حجمی):`;
+                    break;
+                } else {
+                    discountContainer.style.display = 'none';
                 }
             }
+            
+            // محاسبه هزینه پس از تخفیف
+            let discountedCost = baseCost - discountAmount;
+            
+            // هزینه اضافی
+            let extraCost = 0;
+            let extraReasons = [];
+            
+            // هزینه نوع منبع
+            if (sourceType !== 'normal') {
+                const sourceCost = 12000 * pages;
+                extraCost += sourceCost;
+                extraReasons.push({
+                    reason: `بابت ${getSourceTypeText(sourceType)}`,
+                    amount: sourceCost
+                });
+            }
+            
+            // هزینه اصطلاحات انگلیسی
+            if (englishTerms > 5) {
+                const englishCost = 10800 * pages;
+                extraCost += englishCost;
+                extraReasons.push({
+                    reason: "بابت اصطلاحات انگلیسی",
+                    amount: englishCost
+                });
+            }
+            
+            // سایر هزینه‌های اضافی
+            for (const [factor, isSelected] of Object.entries(selectedFactors)) {
+                if (isSelected) {
+                    const factorCost = 10800 * pages;
+                    extraCost += factorCost;
+                    extraReasons.push({
+                        reason: getFactorText(factor),
+                        amount: factorCost
+                    });
+                }
+            }
+            
+            // محاسبه کل هزینه
+            let totalCost = discountedCost + extraCost;
+            
+            // افزایش هزینه برای تحویل فوری
+            if (isUrgent) {
+                totalCost *= 2;
+                extraReasons.push({
+                    reason: "بابت تحویل فوری",
+                    amount: discountedCost + extraCost
+                });
+            }
+            
+            // محاسبه زمان تحویل
+            const deliveryTime = calculateTextDeliveryTime(pages, isUrgent);
+            
+            // نمایش نتایج
+            document.getElementById('amountLabel').textContent = "تعداد صفحات:";
+            document.getElementById('amountValue').textContent = pages + " صفحه";
+            document.getElementById('basePrice').textContent = baseCost.toLocaleString('fa-IR') + " تومان";
+            document.getElementById('discountAmount').textContent = discountAmount.toLocaleString('fa-IR') + " تومان";
+            document.getElementById('deliveryTime').textContent = deliveryTime;
+            document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
+            document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
+            
+            // نمایش هزینه‌های اضافی با دلایل
+            displayExtraCosts(extraReasons);
         }
-
-        if (discountRate > 0) {
+        
+        // محاسبه قیمت تایپ صوتی
+        function calculateVoicePrice() {
+            // دریافت مقادیر ورودی
+            const hours = parseInt(document.getElementById('hours').value) || 0;
+            const minutes = parseInt(document.getElementById('minutes').value) || 0;
+            const audioQuality = document.getElementById('audioQuality').value;
+            const isUrgent = document.getElementById('audioUrgent').value === 'urgent';
+            
+            // محاسبه کل دقیقه‌ها
+            const totalMinutes = hours * 60 + minutes;
+            const totalHours = totalMinutes / 60;
+            
+            // محاسبه هزینه پایه
+            const baseCost = totalHours * VOICE_PRICE_PER_HOUR;
+            
+            // محاسبه تخفیف حجمی
+            let discountRate = 0;
+            let discountAmount = 0;
+            let discountContainer = document.getElementById('discountContainer');
+            let discountLabel = document.getElementById('discountLabel');
+            
+            // تخفیف‌ها بر اساس ساعات
+            if (totalHours >= 10) {
+                discountRate = 0.40;
+            } else if (totalHours >= 6) {
+                discountRate = 0.33;
+            } else if (totalHours >= 4) {
+                discountRate = 0.28;
+            } else if (totalHours >= 3) {
+                discountRate = 0.22;
+            } else if (totalHours >= 2) {
+                discountRate = 0.15;
+            } else if (totalHours >= 1) {
+                discountRate = 0.08;
+            }
+            
             discountAmount = Math.floor(baseCost * discountRate);
-            discountContainer.style.display = 'block';
-            discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
-            document.getElementById('discountAmount').textContent = discountAmount.toLocaleString('fa-IR') + " تومان"; // Set the actual discount amount
-        }
-        let discountedCost = baseCost - discountAmount;
-
-        let extraCost = 0;
-        let extraReasons = [];
-
-        if (sourceType !== 'normal' && textExtraSourcePrices[sourceType]) {
-            const sourceExtraCostPerPage = textExtraSourcePrices[sourceType];
-            const totalSourceExtraCost = sourceExtraCostPerPage * pages;
-            extraCost += totalSourceExtraCost;
-            extraReasons.push({ reason: `بابت ${getSourceTypeText(sourceType)}`, amount: totalSourceExtraCost });
-        }
-
-        if (englishTermsPerPage > 5) {
-            const totalEnglishTermsExtraCost = ENGLISH_TERMS_EXTRA_PER_PAGE * pages;
-            extraCost += totalEnglishTermsExtraCost;
-            extraReasons.push({ reason: `بابت اصطلاحات انگلیسی (بیش از 5 مورد در صفحه)`, amount: totalEnglishTermsExtraCost });
-        }
-
-        for (const [factor, isSelected] of Object.entries(selectedFactors)) {
-            if (isSelected && textExtraFactorPrices[factor]) {
-                const factorExtraCostPerPage = textExtraFactorPrices[factor];
-                const totalFactorExtraCost = factorExtraCostPerPage * pages;
-                extraCost += totalFactorExtraCost;
-                extraReasons.push({ reason: getFactorText(factor), amount: totalFactorExtraCost });
+            
+            if (discountAmount > 0) {
+                discountContainer.style.display = 'block';
+                discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
+            } else {
+                discountContainer.style.display = 'none';
             }
-        }
-
-        let totalCost = discountedCost + extraCost;
-
-        if (isUrgent) {
-            const urgentExtraAmount = totalCost; // This is the amount added, not the new totalCost
-            totalCost *= 2;
-            if (urgentExtraAmount > 0) {
-                 extraReasons.push({ reason: "بابت تحویل فوری", amount: urgentExtraAmount / 2 }); // Add half of the doubled cost as "extra" for display purpose
+            
+            // هزینه پس از تخفیف
+            let discountedCost = baseCost - discountAmount;
+            
+            // هزینه اضافی
+            let extraCost = 0;
+            let extraReasons = [];
+            
+            // هزینه کیفیت صدا
+            if (audioQuality !== 'normal') {
+                let qualityCost = 0;
+                if (audioQuality === 'low') {
+                    qualityCost = baseCost * 0.5;
+                } else if (audioQuality === 'multipleSpeakers') {
+                    qualityCost = baseCost * 0.1;
+                }
+                
+                extraCost += qualityCost;
+                extraReasons.push({
+                    reason: `بابت ${getAudioQualityText(audioQuality)}`,
+                    amount: qualityCost
+                });
             }
-        }
-
-        let normalDeliveryDays = 0;
-        if (pages === 0) normalDeliveryDays = 0;
-        else if (pages >= 1 && pages <= 10) normalDeliveryDays = 1;
-        else if (pages >= 11 && pages <= 20) normalDeliveryDays = 2;
-        else if (pages >= 21 && pages <= 40) normalDeliveryDays = 3;
-        else if (pages >= 41 && pages <= 60) normalDeliveryDays = 4;
-        else if (pages >= 61 && pages <= 80) normalDeliveryDays = 5;
-        else if (pages >= 81 && pages <= 120) normalDeliveryDays = 6;
-        else if (pages >= 121 && pages <= 200) normalDeliveryDays = 7;
-        else if (pages > 200) normalDeliveryDays = 7 + Math.ceil((pages - 200) / 100);
-
-        let deliveryTimeText;
-        if (pages === 0) deliveryTimeText = "وارد نشده";
-        else if (isUrgent) deliveryTimeText = normalDeliveryDays + " ساعت کاری";
-        else deliveryTimeText = normalDeliveryDays + " روز کاری";
-
-        document.getElementById('amountLabel').textContent = "تعداد صفحات:";
-        document.getElementById('amountValue').textContent = pages + " صفحه";
-        document.getElementById('basePrice').textContent = baseCost.toLocaleString('fa-IR') + " تومان";
-        document.getElementById('deliveryTime').textContent = deliveryTimeText;
-        document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
-        document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
-        document.getElementById('totalSaved').textContent = discountAmount.toLocaleString('fa-IR');
-        document.getElementById('totalPages').textContent = pages.toLocaleString('fa-IR');
-        document.getElementById('totalMinutes').textContent = '0';
-        displayExtraCosts(extraReasons);
-    }
-
-    function calculateVoicePrice() {
-        const hoursInput = document.getElementById('hours');
-        const hoursError = document.getElementById('hoursError');
-        let hours = parseInt(hoursInput.value);
-        if (isNaN(hours) || hours < 0) {
-            hoursInput.classList.add('invalid'); hoursError.style.display = 'block'; hours = 0;
-        } else {
-            hoursInput.classList.remove('invalid'); hoursError.style.display = 'none';
-        }
-
-        const minutesInput = document.getElementById('minutes');
-        const minutesError = document.getElementById('minutesError');
-        let minutes = parseInt(minutesInput.value);
-        if (isNaN(minutes) || minutes < 0 || minutes > 59) {
-            minutesInput.classList.add('invalid'); minutesError.style.display = 'block'; minutes = 0;
-        } else {
-            minutesInput.classList.remove('invalid'); minutesError.style.display = 'none';
-        }
-
-        const audioQuality = document.getElementById('audioQuality').value;
-        const isUrgent = document.getElementById('audioUrgent').value === 'urgent';
-
-        const totalMinutes = hours * 60 + minutes;
-        const totalHours = totalMinutes / 60;
-
-        const baseCost = totalHours * VOICE_PRICE_PER_HOUR;
-
-        let discountRate = 0;
-        let discountAmount = 0;
-        const discountContainer = document.getElementById('discountContainer');
-        const discountLabel = document.getElementById('discountLabel');
-        discountContainer.style.display = 'none';
-
-        const sortedDiscountTiersHours = Object.keys(voiceDiscounts).map(Number).sort((a, b) => b - a);
-        for (const tierHours of sortedDiscountTiersHours) {
-            if (totalHours >= tierHours) {
-                discountRate = voiceDiscounts[tierHours];
-                break;
+            
+            // محاسبه کل هزینه
+            let totalCost = discountedCost + extraCost;
+            
+            // افزایش هزینه برای تحویل فوری
+            if (isUrgent) {
+                totalCost *= 2;
+                extraReasons.push({
+                    reason: "بابت تحویل فوری",
+                    amount: discountedCost + extraCost
+                });
             }
+            
+            // محاسبه زمان تحویل
+            const deliveryTime = calculateVoiceDeliveryTime(totalMinutes, isUrgent);
+            
+            // نمایش نتایج
+            document.getElementById('amountLabel').textContent = "مدت زمان:";
+            document.getElementById('amountValue').textContent = 
+                (hours > 0 ? hours + " ساعت و " : "") + minutes + " دقیقه";
+            document.getElementById('basePrice').textContent = Math.floor(baseCost).toLocaleString('fa-IR') + " تومان";
+            document.getElementById('discountAmount').textContent = Math.floor(discountAmount).toLocaleString('fa-IR') + " تومان";
+            document.getElementById('deliveryTime').textContent = deliveryTime;
+            document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
+            document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
+            
+            // نمایش هزینه‌های اضافی با دلایل
+            displayExtraCosts(extraReasons);
         }
-
-        if (discountRate > 0) {
-            discountAmount = Math.floor(baseCost * discountRate);
-            discountContainer.style.display = 'block';
-            discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
-            document.getElementById('discountAmount').textContent = discountAmount.toLocaleString('fa-IR') + " تومان"; // Set the actual discount amount
-        }
-        let discountedCost = baseCost - discountAmount;
-
-        let extraCost = 0;
-        let extraReasons = [];
-
-        if (audioQuality !== 'normal' && voiceExtraQualityMultipliers[audioQuality]) {
-            const qualityMultiplier = voiceExtraQualityMultipliers[audioQuality];
-            const qualityExtraCost = baseCost * qualityMultiplier;
-            extraCost += qualityExtraCost;
-            extraReasons.push({ reason: `بابت ${getAudioQualityText(audioQuality)}`, amount: qualityExtraCost });
-        }
-
-        let totalCost = discountedCost + extraCost;
-
-        if (isUrgent) {
-            const urgentExtraAmount = totalCost; // This is the amount added, not the new totalCost
-            totalCost *= 2;
-            if (urgentExtraAmount > 0) {
-                extraReasons.push({ reason: "بابت تحویل فوری", amount: urgentExtraAmount / 2 }); // Add half of the doubled cost as "extra" for display purpose
-            }
-        }
-
-        let normalDeliveryDaysVoice = 0;
-        if (totalMinutes === 0) normalDeliveryDaysVoice = 0;
-        else if (totalMinutes >= 1 && totalMinutes <= 30) normalDeliveryDaysVoice = 1;
-        else if (totalMinutes >= 31 && totalMinutes <= 60) normalDeliveryDaysVoice = 2;
-        else if (totalMinutes > 60 && totalMinutes <= 120) normalDeliveryDaysVoice = 3;
-        else if (totalMinutes > 120 && totalMinutes <= 180) normalDeliveryDaysVoice = 4;
-        else if (totalMinutes > 180 && totalMinutes <= 240) normalDeliveryDaysVoice = 5;
-        else if (totalMinutes > 240 && totalMinutes <= 360) normalDeliveryDaysVoice = 6;
-        else if (totalMinutes > 360 && totalMinutes <= 600) normalDeliveryDaysVoice = 7;
-        else if (totalMinutes > 600) normalDeliveryDaysVoice = 7 + Math.ceil((totalMinutes - 600) / 120);
-
-        let deliveryTimeText;
-        if (totalMinutes === 0) deliveryTimeText = "وارد نشده";
-        else if (isUrgent) deliveryTimeText = normalDeliveryDaysVoice + " ساعت کاری";
-        else deliveryTimeText = normalDeliveryDaysVoice + " روز کاری";
-
-        document.getElementById('amountLabel').textContent = "مدت زمان:";
-        document.getElementById('amountValue').textContent = (hours > 0 ? hours + " ساعت و " : "") + minutes + " دقیقه";
-        document.getElementById('basePrice').textContent = Math.floor(baseCost).toLocaleString('fa-IR') + " تومان";
-        document.getElementById('deliveryTime').textContent = deliveryTimeText;
-        document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
-        document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
-        document.getElementById('totalSaved').textContent = Math.floor(discountAmount).toLocaleString('fa-IR');
-        document.getElementById('totalMinutes').textContent = totalMinutes.toLocaleString('fa-IR');
-        document.getElementById('totalPages').textContent = '0';
-        displayExtraCosts(extraReasons);
-    }
-
-    function displayExtraCosts(extraReasons) {
-        const container = document.getElementById('extraCostsContainer');
-        container.innerHTML = '';
-        if (extraReasons.length === 0) {
-            const noExtraRow = document.createElement('div');
-            noExtraRow.className = 'result-row';
-            noExtraRow.innerHTML = '<span>هزینه اضافی:</span><span>0 تومان</span>';
-            container.appendChild(noExtraRow);
-        } else {
-            extraReasons.forEach(reasonEntry => {
+        
+        // نمایش هزینه‌های اضافی با دلایل
+        function displayExtraCosts(extraReasons) {
+            const container = document.getElementById('extraCostsContainer');
+            container.innerHTML = '';
+            
+            let totalExtra = 0;
+            
+            extraReasons.forEach(reason => {
+                totalExtra += reason.amount;
+                
                 const extraRow = document.createElement('div');
                 extraRow.className = 'result-row';
+                
                 const reasonSpan = document.createElement('span');
-                reasonSpan.textContent = reasonEntry.reason;
+                reasonSpan.textContent = reason.reason;
+                
                 const amountSpan = document.createElement('span');
-                amountSpan.textContent = Math.floor(reasonEntry.amount).toLocaleString('fa-IR') + " تومان";
+                amountSpan.textContent = Math.floor(reason.amount).toLocaleString('fa-IR') + " تومان";
+                
                 extraRow.appendChild(reasonSpan);
                 extraRow.appendChild(amountSpan);
                 container.appendChild(extraRow);
             });
+            
+            if (extraReasons.length === 0) {
+                const noExtraRow = document.createElement('div');
+                noExtraRow.className = 'result-row';
+                noExtraRow.innerHTML = '<span>هزینه اضافی:</span><span>0 تومان</span>';
+                container.appendChild(noExtraRow);
+            }
         }
-    }
-
-    function getSourceTypeText(sourceType) {
-        const texts = {
-            'goodHandwriting': 'دست‌نویس خوش‌خط',
-            'badHandwriting': 'دست‌نویس بدخط',
-            'lowQuality': 'کیفیت پایین منبع',
-            'testQuestions': 'سوالات تستی چهارگزینه‌ای'
-        };
-        return texts[sourceType] || sourceType;
-    }
-    function getFactorText(factor) {
-        const texts = {
-            'arabicText': 'متن فارسی-عربی',
-            'addImages': 'افزودن عکس به صفحات',
-            'specializedField': 'زمینه تخصصی'
-        };
-        return texts[factor] || factor;
-    }
-    function getAudioQualityText(quality) {
-        const texts = {
-            'low': 'کیفیت پایین صوت',
-            'multipleSpeakers': 'چند گوینده در صوت'
-        };
-        return texts[quality] || quality;
-    }
-
-    function updateInvoiceDisplay() {
-        const currentDate = new Date();
-        const dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        let currentPersianDate = currentDate.toLocaleDateString('fa-IR-u-nu-latn', dateOptions).replace(/\//g, '/');
-        const dateParts = currentPersianDate.split('/');
-        if(dateParts[1] && dateParts[1].length === 1) dateParts[1] = '0' + dateParts[1];
-        if(dateParts[2] && dateParts[2].length === 1) dateParts[2] = '0' + dateParts[2];
-        currentPersianDate = dateParts.join('/');
-        document.getElementById('invoiceDateDisplay').textContent = currentPersianDate;
-
-        const randomNumber = Math.floor(Math.random() * 9000) + 1000; // 1000-9999
-        document.getElementById('invoiceNumberDisplay').textContent = `TP-${currentDate.getFullYear()}-${String(randomNumber).padStart(4, '0')}`;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize factor prices display
-        document.querySelectorAll('.factor-item').forEach(item => {
-            const factorTitleElement = item.querySelector('.factor-title span');
-            if (factorTitleElement) {
-                const factorText = factorTitleElement.textContent.trim();
-                let factorKey = null;
-                for (const key in textExtraFactorPrices) {
-                    if (getFactorText(key) === factorText) {
-                        factorKey = key;
-                        break;
-                    }
-                }
-                if (factorKey && textExtraFactorPrices[factorKey]) {
-                    const priceElement = item.querySelector('.factor-price');
-                    if (priceElement) {
-                        priceElement.textContent = `+${textExtraFactorPrices[factorKey].toLocaleString('fa-IR')} تومان برای هر صفحه`;
-                    }
-                }
-            }
-        });
-
-        // Set initial values for stats
-        document.getElementById('totalPages').textContent = '0';
-        document.getElementById('totalMinutes').textContent = '0';
-
-        // Attach event listeners to inputs
-        const inputs = ['pages', 'englishTerms', 'hours', 'minutes', 'sourceType', 'urgent', 'audioQuality', 'audioUrgent'];
-        inputs.forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.addEventListener('input', calculatePrice);
-                if(element.tagName === 'SELECT') element.addEventListener('change', calculatePrice);
-            }
-        });
-
-        // Initial calculation and invoice display
-        calculatePrice();
-        updateInvoiceDisplay(); // Ensure invoice details are set on load
-
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            const invoiceInfoEl = document.getElementById('invoiceInfo');
-            const resultBoxEl = document.getElementById('resultBox');
-            const actionButtonsEl = resultBoxEl.querySelector('.action-buttons');
-            let originalDisplayActionButtons = '';
-
-            // Update invoice details one last time before screenshot
-            updateInvoiceDisplay();
-
-            // Temporarily hide action buttons and show invoice info for screenshot
-            invoiceInfoEl.style.display = 'block';
-            if (actionButtonsEl) {
-                originalDisplayActionButtons = actionButtonsEl.style.display;
-                actionButtonsEl.style.display = 'none';
-            }
-
-            html2canvas(resultBoxEl, {
-                scrollY: -window.scrollY,
-                backgroundColor: "#ffffff",
-                logging: false
-            }).then(canvas => {
-                const image = canvas.toDataURL('image/png');
+        
+        // دانلود تصویر از بخش نتیجه
+        function downloadResultImage() {
+            const resultBox = document.getElementById('resultBox');
+            
+            html2canvas(resultBox).then(canvas => {
                 const link = document.createElement('a');
-                link.href = image;
-                const fileNameDate = document.getElementById('invoiceDateDisplay').textContent.replace(/\//g, '-');
-                link.download = `invoice-${fileNameDate}-${selectedService}.png`;
-                document.body.appendChild(link);
+                link.download = 'نتیجه-محاسبه-قیمت-تایپ.png';
+                link.href = canvas.toDataURL('image/png');
                 link.click();
-                document.body.removeChild(link);
-
-                // Revert changes after screenshot
-                invoiceInfoEl.style.display = 'block'; // Keep it visible after download, as it's meant to be
-                if (actionButtonsEl) actionButtonsEl.style.display = originalDisplayActionButtons;
-                showToast('فاکتور با موفقیت به صورت عکس دانلود شد!');
-            }).catch(err => {
-                console.error('خطا در ایجاد عکس فاکتور:', err);
-                showToast('خطا در ایجاد عکس فاکتور!', 'error');
-                invoiceInfoEl.style.display = 'block'; // Keep it visible after download, as it's meant to be
-                if (actionButtonsEl) actionButtonsEl.style.display = originalDisplayActionButtons;
             });
-        });
-    });
-</script>
+        }
+        
+        // توابع کمکی برای نمایش متن
+        function getSourceTypeText(sourceType) {
+            const texts = {
+                'goodHandwriting': 'دست‌نویس خوش‌خط',
+                'badHandwriting': 'دست‌نویس بدخط',
+                'lowQuality': 'کیفیت پایین',
+                'testQuestions': 'سوالات تستی'
+            };
+            return texts[sourceType] || sourceType;
+        }
+        
+        function getFactorText(factor) {
+            const texts = {
+                'arabicText': 'متن فارسی-عربی',
+                'addImages': 'افزودن عکس به صفحات',
+                'specializedField': 'زمینه تخصصی'
+            };
+            return texts[factor] || factor;
+        }
+        
+        function getAudioQualityText(quality) {
+            const texts = {
+                'low': 'کیفیت پایین صوت',
+                'multipleSpeakers': 'چند گوینده'
+            };
+            return texts[quality] || quality;
+        }
+        
+        // محاسبه اولیه هنگام بارگذاری صفحه
+        window.onload = function() {
+            // اضافه کردن event listeners
+            const inputs = ['pages', 'englishTerms', 'hours', 'minutes'];
+            inputs.forEach(id => {
+                document.getElementById(id).addEventListener('input', function() {
+                    calculatePrice();
+                });
+            });
+            
+            const selects = ['sourceType', 'urgent', 'audioQuality', 'audioUrgent'];
+            selects.forEach(id => {
+                document.getElementById(id).addEventListener('change', function() {
+                    calculatePrice();
+                });
+            });
+            
+            // دکمه دانلود تصویر
+            document.getElementById('downloadImageBtn').addEventListener('click', downloadResultImage);
+            
+            // محاسبه اولیه
+            calculatePrice();
+        };
+    </script>
+</body>
 </html>
