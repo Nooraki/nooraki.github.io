@@ -3,1129 +3,932 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سامانه حرفه‌ای محاسبه قیمت تایپ</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>استعلام قیمت خدمات تایپ</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        vazir: ['Vazirmatn', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #3498db;
-            --primary-dark: #2980b9;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --border: #e0e0e0;
-            --transition: all 0.3s ease;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-        }
-        
-        * {
-            font-family: Vazirmatn, sans-serif;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: var(--dark);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        header {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-        
         .card {
-            padding: 30px;
-            border-bottom: 1px solid var(--border);
-            transition: var(--transition);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        
-        .card-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            color: var(--secondary);
-            font-size: 1.5rem;
-        }
-        
-        .card-title i {
-            background: rgba(52, 152, 219, 0.1);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-left: 15px;
-            color: var(--primary);
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 12px;
-            font-weight: bold;
-            color: var(--secondary);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .form-group label i {
-            margin-left: 8px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-size: 1rem;
-            transition: var(--transition);
-            background: #fff;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-        
-        .form-control.invalid {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
-        }
-        
-        .error-message {
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-top: 8px;
-            display: none;
-        }
-        
-        .service-type {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .service-type-btn {
-            padding: 20px;
-            background: #e9ecef;
-            border: 2px solid #ced4da;
-            border-radius: var(--radius);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            min-width: 220px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .service-type-btn:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
-        
-        .service-type-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        .tab-button {
+            transition: all 0.3s ease;
         }
-        
-        .service-type-btn i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .tab-button.active {
+            transform: scale(1.05);
         }
-        
-        .price-factors {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-        
-        .factor-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .factor-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary);
-        }
-        
-        .factor-item.selected {
-            border-color: var(--primary);
-            background: rgba(52, 152, 219, 0.05);
-            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.15);
-        }
-        
-        .factor-title {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-        
-        .factor-title i {
-            margin-left: 10px;
-            color: var(--primary);
-        }
-        
-        .factor-price {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
-        .result-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 30px;
-            border-radius: var(--radius);
-            margin-top: 20px;
-            border-right: 4px solid var(--primary);
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px dashed var(--border);
-            font-size: 1.1rem;
-        }
-        
-        .discount-row {
-            background: rgba(39, 174, 96, 0.1);
-            border-radius: var(--radius);
-            padding: 15px;
-            margin: 15px 0;
-            color: var(--success);
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1rem;
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
-        .summary {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .summary-item {
-            background: white;
-            padding: 25px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .summary-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .summary-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .summary-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
         .contact-box {
-            background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #bbdefb;
+            background: linear-gradient(to right, #f0f9ff, #e6f7ff);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #d1e9ff;
         }
-        
-        .contact-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .pulse {
+            animation: pulse 2s infinite;
         }
-        
-        .telegram-link {
-            display: inline-block;
-            background: #0088cc;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 10px;
-            transition: var(--transition);
-            font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.2);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        
-        .telegram-link:hover {
-            background: #0077b3;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 136, 204, 0.3);
-        }
-        
-        .telegram-link i {
-            margin-left: 10px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            min-width: 220px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn-primary {
-            background: var(--success);
-            color: white;
-        }
-        
-        .btn-secondary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-tertiary {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        .btn i {
-            margin-left: 10px;
-        }
-        
-        footer {
-            background: var(--secondary);
-            color: white;
-            text-align: center;
-            padding: 25px;
-            font-size: 1rem;
-        }
-        
-        .time-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 992px) {
-            .container {
-                max-width: 95%;
-            }
-            
-            .summary {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .service-type {
-                flex-direction: column;
-            }
-            
-            .service-type-btn {
-                width: 100%;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .time-inputs {
-                grid-template-columns: 1fr;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            header {
-                padding: 20px 15px;
-            }
-            
-            .card {
-                padding: 20px 15px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .card-title {
-                font-size: 1.3rem;
-            }
+        .extra-charge-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e5e7eb;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <h1><i class="fas fa-calculator"></i> سامانه حرفه‌ای محاسبه قیمت تایپ</h1>
-                <p class="subtitle">محاسبه دقیق و آنی هزینه تایپ متنی و صوتی با بهترین کیفیت و قیمت</p>
-            </div>
-        </header>
-        
-        <div class="card">
-            <div class="card-title">
-                <i class="fas fa-keyboard"></i>
-                <h2>نوع خدمت مورد نیاز</h2>
-            </div>
-            
-            <div class="service-type">
-                <div class="service-type-btn active" id="textServiceBtn" onclick="selectService('text')">
-                    <i class="fas fa-file-alt"></i>
-                    تایپ متنی
-                    <small>اسناد، کتاب‌ها، مقالات</small>
+<body class="min-h-screen py-8 px-4 font-vazir bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+        <div class="card bg-white">
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-keyboard text-3xl text-indigo-600 mr-3"></i>
+                    <h1 class="text-3xl font-bold text-center text-indigo-700">استعلام قیمت خدمات تایپ</h1>
                 </div>
-                <div class="service-type-btn" id="voiceServiceBtn" onclick="selectService('voice')">
-                    <i class="fas fa-microphone-alt"></i>
-                    تایپ صوتی
-                    <small>فایل‌های صوتی، مصاحبه‌ها، جلسات</small>
-                </div>
-            </div>
-        </div>
-        
-        <!-- بخش تایپ متنی -->
-        <div id="textTypingSection">
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-edit"></i>
-                    <h2>مشخصات سفارش تایپ متنی</h2>
-                </div>
+                <p class="text-center text-gray-600 mt-2">محاسبه سریع و دقیق هزینه خدمات تایپ متنی و صوتی</p>
                 
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="pages"><i class="fas fa-file"></i> تعداد صفحات:</label>
-                        <input type="number" id="pages" min="1" value="5" class="form-control" placeholder="تعداد صفحات را وارد کنید">
-                        <div class="error-message" id="pagesError">تعداد صفحات باید حداقل 1 باشد</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="sourceType"><i class="fas fa-file-image"></i> نوع منبع:</label>
-                        <select id="sourceType" class="form-control">
-                            <option value="normal">تایپ عادی (فایل دیجیتال)</option>
-                            <option value="goodHandwriting">دست‌نویس خوش‌خط</option>
-                            <option value="badHandwriting">دست‌نویس بدخط</option>
-                            <option value="lowQuality">کیفیت پایین (وضوح کم)</option>
-                            <option value="testQuestions">سوالات تستی چهارگزینه‌ای</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="urgent"><i class="fas fa-bolt"></i> زمان تحویل:</label>
-                        <select id="urgent" class="form-control">
-                            <option value="normal">تحویل عادی</option>
-                            <option value="urgent">تحویل فوری (2 برابر هزینه)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="englishTerms"><i class="fas fa-language"></i> اصطلاحات انگلیسی:</label>
-                        <input type="number" id="englishTerms" min="0" value="0" class="form-control" placeholder="تعداد کلمات انگلیسی در هر صفحه">
-                        <div class="error-message" id="englishTermsError">تعداد باید عددی مثبت باشد</div>
+                <div class="flex justify-center mt-6">
+                    <div class="inline-flex rounded-md shadow-sm" role="group">
+                        <button id="text-tab" class="tab-button px-4 py-2 text-sm font-medium rounded-r-md bg-indigo-600 text-white focus:z-10 focus:ring-2 focus:ring-indigo-500 active">
+                            <i class="fas fa-file-alt mr-1"></i>
+                            تایپ متنی
+                        </button>
+                        <button id="audio-tab" class="tab-button px-4 py-2 text-sm font-medium rounded-l-md bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-indigo-500">
+                            <i class="fas fa-microphone-alt mr-1"></i>
+                            تایپ صوتی
+                        </button>
                     </div>
                 </div>
             </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-tags"></i>
-                    <h2>موارد افزایش قیمت تایپ متنی</h2>
-                </div>
-                
-                <p style="margin-bottom: 20px; color: #666; text-align: center;">موارد زیر را در صورت نیاز انتخاب کنید:</p>
-                
-                <div class="price-factors">
-                    <div class="factor-item" onclick="toggleFactor(this, 'arabicText')">
-                        <div class="factor-title">
-                            <i class="fas fa-language"></i>
-                            <span>متن فارسی-عربی</span>
+
+            <div class="p-6">
+                <div id="form-container">
+                    <form id="main-form">
+                        <div id="text-form" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-file text-indigo-500 mr-1"></i>
+                                    تعداد صفحات
+                                </label>
+                                <input type="number" id="pages" name="pages" min="1" max="1000" value="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-pen text-indigo-500 mr-1"></i>
+                                    نوع منبع
+                                </label>
+                                <div class="space-y-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="digital" name="sourceType" value="digital" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="digital" class="mr-2 block text-sm text-gray-700">فایل دیجیتال (عادی)</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="handwritten-good" name="sourceType" value="handwritten-good" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="handwritten-good" class="mr-2 block text-sm text-gray-700">دست‌نویس خوش خط</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="handwritten-bad" name="sourceType" value="handwritten-bad" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="handwritten-bad" class="mr-2 block text-sm text-gray-700">دست‌نویس بد خط</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="multiple-choice" name="sourceType" value="multiple-choice" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="multiple-choice" class="mr-2 block text-sm text-gray-700">سوالات تستی/فرمول</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="english-arabic" name="sourceType" value="english-arabic" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="english-arabic" class="mr-2 block text-sm text-gray-700">متون انگلیسی/عربی</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-clock text-indigo-500 mr-1"></i>
+                                    زمان تحویل
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="standard-delivery" name="deliveryOption" value="standard" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="standard-delivery" class="mr-2 block text-sm text-gray-700">تحویل عادی</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="urgent-delivery" name="deliveryOption" value="urgent" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="urgent-delivery" class="mr-2 block text-sm text-gray-700">تحویل فوری</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="termsPerPage" class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-language text-indigo-500 mr-1"></i>
+                                    تعداد اصطلاحات انگلیسی/عربی در هر صفحه
+                                </label>
+                                <input type="number" id="termsPerPage" name="termsPerPage" min="0" value="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-plus-circle text-indigo-500 mr-1"></i>
+                                    موارد افزایش قیمت
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="lowQualityImages" name="additionalServices.lowQualityImages" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="lowQualityImages" class="mr-2 block text-sm text-gray-700">کیفیت پایین عکس‌ها</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="addImages" name="additionalServices.addImages" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="addImages" class="mr-2 block text-sm text-gray-700">افزودن عکس به صفحات</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="addCharts" name="additionalServices.addCharts" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="addCharts" class="mr-2 block text-sm text-gray-700">افزودن نمودار به صفحات</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="addExcel" name="additionalServices.addExcel" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="addExcel" class="mr-2 block text-sm text-gray-700">افزودن فایل اکسل</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="proofreading" name="additionalServices.proofreading" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="proofreading" class="mr-2 block text-sm text-gray-700">ویراستاری</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="punctuation" name="additionalServices.punctuation" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="punctuation" class="mr-2 block text-sm text-gray-700">افزودن علائم نگارشی</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="pdfOutput" name="additionalServices.pdfOutput" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="pdfOutput" class="mr-2 block text-sm text-gray-700">خروجی PDF</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="factor-price">+10,800 تومان برای هر صفحه</div>
-                    </div>
-                    
-                    <div class="factor-item" onclick="toggleFactor(this, 'addImages')">
-                        <div class="factor-title">
-                            <i class="fas fa-image"></i>
-                            <span>افزودن عکس به صفحات</span>
+
+                        <div id="audio-form" class="space-y-6 hidden">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="hours" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <i class="fas fa-hourglass-start text-indigo-500 mr-1"></i>
+                                        مدت زمان (ساعت)
+                                    </label>
+                                    <input type="number" id="hours" name="hours" min="0" value="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="minutes" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <i class="fas fa-hourglass-end text-indigo-500 mr-1"></i>
+                                        مدت زمان (دقیقه)
+                                    </label>
+                                    <input type="number" id="minutes" name="minutes" min="0" max="59" value="30" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-volume-up text-indigo-500 mr-1"></i>
+                                    کیفیت صوت
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="clear" name="quality" value="clear" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="clear" class="mr-2 block text-sm text-gray-700">وضوح خوب (کیفیت عادی)</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="low" name="quality" value="low" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="low" class="mr-2 block text-sm text-gray-700">نویزدار (کیفیت پایین)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-truck text-indigo-500 mr-1"></i>
+                                    زمان تحویل
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="audio-standard" name="audioDeliveryOption" value="standard" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="audio-standard" class="mr-2 block text-sm text-gray-700">تحویل عادی</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="radio" id="audio-urgent" name="audioDeliveryOption" value="urgent" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="audio-urgent" class="mr-2 block text-sm text-gray-700">تحویل فوری</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    <i class="fas fa-plus-circle text-indigo-500 mr-1"></i>
+                                    موارد افزایش قیمت
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="multipleSpeakers" name="additionalServices.multipleSpeakers" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="multipleSpeakers" class="mr-2 block text-sm text-gray-700">چند گوینده بودن</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="audioPunctuation" name="additionalServices.punctuation" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="audioPunctuation" class="mr-2 block text-sm text-gray-700">افزودن علائم نگارشی</label>
+                                    </div>
+                                    <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                        <input type="checkbox" id="audioProofreading" name="additionalServices.proofreading" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="audioProofreading" class="mr-2 block text-sm text-gray-700">ویراستاری</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="factor-price">+10,800 تومان برای هر صفحه</div>
-                    </div>
-                    
-                    <div class="factor-item" onclick="toggleFactor(this, 'specializedField')">
-                        <div class="factor-title">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>زمینه تخصصی</span>
+
+                        <div class="mt-8">
+                            <button type="submit" class="pulse w-full inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                محاسبه قیمت
+                                <i class="fas fa-calculator mr-2"></i>
+                            </button>
                         </div>
-                        <div class="factor-price">+1,200 تومان برای هر صفحه</div>
+                    </form>
+                </div>
+
+                <div id="result-container" class="hidden space-y-6">
+                    <div id="result-card" class="card bg-white">
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <i class="fas fa-file-invoice text-indigo-600 text-xl mr-2"></i>
+                                <h3 id="result-title" class="text-xl font-bold text-indigo-700">نتیجه استعلام تایپ متنی</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div id="text-result" class="space-y-4">
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">تاریخ استعلام:</span>
+                                    <span class="font-medium text-gray-800" id="inquiry-date"></span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">نوع خدمت:</span>
+                                    <span class="font-medium text-gray-800">تایپ متنی</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">تعداد صفحات:</span>
+                                    <span class="font-medium text-gray-800"><span id="pages-result">1</span> صفحه</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">هزینه پایه تایپ:</span>
+                                    <span class="font-medium text-gray-800"><span id="base-price">4,650</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">تخفیف (<span id="discount-rate">0</span>%):</span>
+                                    <span class="font-medium text-red-600">-<span id="discount-amount">0</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">هزینه اضافی:</span>
+                                    <span class="font-medium text-green-600">+<span id="extra-charges">0</span> تومان</span>
+                                </div>
+                                
+                                <div id="extra-charges-breakdown" class="hidden mt-4 bg-gray-50 p-4 rounded-lg">
+                                    <div class="font-medium text-gray-700 mb-2">جزئیات هزینه اضافی:</div>
+                                    <div id="extra-items-list"></div>
+                                </div>
+                                
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">زمان تحویل:</span>
+                                    <span class="font-medium text-gray-800" id="delivery-time">1 روز</span>
+                                </div>
+                                <div class="pt-4 flex justify-between font-bold text-lg">
+                                    <span class="text-indigo-700">مبلغ نهایی:</span>
+                                    <span class="text-indigo-700"><span id="total-price">4,650</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between text-green-600 mt-2">
+                                    <span>پیش پرداخت (50%):</span>
+                                    <span class="font-bold"><span id="prepayment">2,325</span> تومان</span>
+                                </div>
+                            </div>
+
+                            <div id="audio-result" class="space-y-4 hidden">
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">تاریخ استعلام:</span>
+                                    <span class="font-medium text-gray-800" id="audio-inquiry-date"></span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">نوع خدمت:</span>
+                                    <span class="font-medium text-gray-800">تایپ صوتی</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">مدت زمان:</span>
+                                    <span class="font-medium text-gray-800"><span id="audio-duration">0 ساعت و 30 دقیقه</span></span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">هزینه پایه تایپ:</span>
+                                    <span class="font-medium text-gray-800"><span id="audio-base-price">69,750</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">تخفیف (<span id="audio-discount-rate">0</span>%):</span>
+                                    <span class="font-medium text-red-600">-<span id="audio-discount-amount">0</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">هزینه اضافی:</span>
+                                    <span class="font-medium text-green-600">+<span id="audio-extra-charges">0</span> تومان</span>
+                                </div>
+                                
+                                <div id="audio-extra-charges-breakdown" class="hidden mt-4 bg-gray-50 p-4 rounded-lg">
+                                    <div class="font-medium text-gray-700 mb-2">جزئیات هزینه اضافی:</div>
+                                    <div id="audio-extra-items-list"></div>
+                                </div>
+                                
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">زمان تحویل:</span>
+                                    <span class="font-medium text-gray-800" id="audio-delivery-time">1 روز</span>
+                                </div>
+                                <div class="pt-4 flex justify-between font-bold text-lg">
+                                    <span class="text-indigo-700">مبلغ نهایی:</span>
+                                    <span class="text-indigo-700"><span id="audio-total-price">69,750</span> تومان</span>
+                                </div>
+                                <div class="flex justify-between text-green-600 mt-2">
+                                    <span>پیش پرداخت (50%):</span>
+                                    <span class="font-bold"><span id="audio-prepayment">34,875</span> تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="result-buttons" class="p-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between gap-3">
+                            <button id="back-button" class="inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <i class="fas fa-arrow-right ml-2"></i>
+                                بازگشت به فرم
+                            </button>
+                            <button id="download-button" class="inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                <i class="fas fa-download ml-2"></i>
+                                دانلود استعلام
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card bg-white">
+                        <div class="p-6 border-b border-gray-100">
+                            <h3 class="text-xl font-bold text-indigo-700">ثبت سفارش</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="contact-box">
+                                <div class="flex items-center mb-4 p-3 bg-white rounded-lg">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="mr-3">
+                                        <h4 class="font-medium text-gray-800">آدرس دفتر مرکزی</h4>
+                                        <p class="text-sm text-gray-600 mt-1"> خراسان رضوی ، گناباد</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center mb-4 p-3 bg-white rounded-lg">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <div class="mr-3">
+                                        <h4 class="font-medium text-gray-800">وبسایت</h4>
+                                        <a href="https://nooraki.github.io/type" class="text-blue-600 hover:underline text-sm mt-1">www.nooraki.github.io/type</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center p-3 bg-white rounded-lg">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-teal-100 text-teal-600 rounded-full">
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </div>
+                                    <div class="mr-3">
+                                        <h4 class="font-medium text-gray-800">کانال تلگرام</h4>
+                                        <a href="https://t.me/wordtypist" class="text-teal-600 hover:underline text-sm mt-1">t.me/wordtypist</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="p-6 border-t border-gray-100 flex flex-col items-center justify-center py-6 text-sm text-gray-500">
+                <div class="flex flex-wrap justify-center gap-4 mb-3">
+                    <a href="mailto:noorakimohammadrezamail@gmail.com" class="flex items-center hover:text-indigo-700">
+                        <i class="fas fa-envelope mr-1"></i>
+                        noorakimohammadrezamail@gmail.com 
+                    </a>
+                    <a href="tel:+989059780482" class="flex items-center hover:text-indigo-700">
+                        <i class="fas fa-phone mr-1"></i>
+                        09059780482
+                    </a>
+                    <a href="https://t.me/wordtypist" class="flex items-center hover:text-indigo-700">
+                        <i class="fab fa-telegram-plane mr-1"></i>
+                        @wordtypist
+                    </a>
+                </div>
+                <div>© ۱۴۰۲ خدمات تایپ حرفه‌ای. تمامی حقوق محفوظ است.</div>
             </div>
         </div>
-        
-        <!-- بخش تایپ صوتی -->
-        <div id="voiceTypingSection" class="hidden">
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-microphone-alt"></i>
-                    <h2>مشخصات سفارش تایپ صوتی</h2>
-                </div>
-                
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="hours"><i class="fas fa-clock"></i> مدت زمان (ساعت):</label>
-                        <input type="number" id="hours" min="0" value="0" class="form-control" placeholder="تعداد ساعت را وارد کنید">
-                        <div class="error-message" id="hoursError">تعداد باید عددی مثبت باشد</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="minutes"><i class="fas fa-hourglass-half"></i> مدت زمان (دقیقه):</label>
-                        <input type="number" id="minutes" min="0" max="59" value="30" class="form-control" placeholder="تعداد دقیقه را وارد کنید">
-                        <div class="error-message" id="minutesError">باید بین 0 تا 59 باشد</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="audioQuality"><i class="fas fa-volume-up"></i> کیفیت صوت:</label>
-                        <select id="audioQuality" class="form-control">
-                            <option value="normal">کیفیت عادی (وضوح خوب)</option>
-                            <option value="low">کیفیت پایین (نویز زیاد)</option>
-                            <option value="multipleSpeakers">چند گوینده</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="audioUrgent"><i class="fas fa-bolt"></i> زمان تحویل:</label>
-                        <select id="audioUrgent" class="form-control">
-                            <option value="normal">تحویل عادی</option>
-                            <option value="urgent">تحویل فوری (2 برابر هزینه)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h2>نتیجه محاسبه قیمت</h2>
-            </div>
-            
-            <div class="result-box" id="resultBox">
-                <div class="result-row">
-                    <span id="serviceTypeLabel">نوع خدمت:</span>
-                    <span id="serviceTypeValue">تایپ متنی</span>
-                </div>
-                
-                <div class="result-row">
-                    <span id="amountLabel">تعداد صفحات:</span>
-                    <span id="amountValue">5 صفحه</span>
-                </div>
-                
-                <div class="result-row">
-                    <span>هزینه پایه:</span>
-                    <span id="basePrice">23,250 تومان</span>
-                </div>
-                
-                <div id="discountContainer" style="display: none;">
-                    <div class="discount-row">
-                        <span id="discountLabel">تخفیف حجمی:</span>
-                        <span id="discountAmount">0 تومان</span>
-                    </div>
-                </div>
-                
-                <div id="extraCostsContainer">
-                    <!-- هزینه‌های اضافی با دلیل نمایش داده می‌شوند -->
-                </div>
-                
-                <div class="result-row">
-                    <span>زمان تحویل:</span>
-                    <span id="deliveryTime">1 روز کاری</span>
-                </div>
-                
-                <div class="summary">
-                    <div class="summary-item">
-                        <div class="summary-title">مبلغ نهایی</div>
-                        <div class="summary-value"><span id="totalPrice">23,250</span> تومان</div>
-                    </div>
-                    
-                    <div class="summary-item">
-                        <div class="summary-title">پیش‌پرداخت (70%)</div>
-                        <div class="summary-value"><span id="prepayment">16,275</span> تومان</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="action-buttons">
-                <button id="downloadImageBtn" class="btn btn-primary">
-                    <i class="fas fa-download"></i> دانلود تصویر نتیجه
-                </button>
-            </div>
-        </div>
-        
-        <div class="contact-box">
-            <h3 class="contact-title"><i class="fas fa-paper-plane"></i> برای ثبت سفارش با ما تماس بگیرید</h3>
-            <a href="https://t.me/Wordtypist" class="telegram-link" target="_blank">
-                <i class="fab fa-telegram"></i> ارتباط از طریق تلگرام
-            </a>
-            <p style="margin-top: 20px; font-size: 1.1rem; color: var(--secondary);">
-            </p>
-        </div>
-        
-        <footer>
-            <p>© ۱۴۰۲ سامانه محاسبه قیمت تایپ - تمامی حقوق محفوظ است</p>
-        </footer>
     </div>
-    
+
     <script>
-        // تعرفه‌های پایه و اضافی
-        const BASE_PRICE = 4650;
-        const VOICE_PRICE_PER_HOUR = 200000;
-        
-        // تخفیف‌های حجمی برای تایپ متنی
-        const textDiscounts = {
-            20: 0.08,    // 8% تخفیف
-            40: 0.15,    // 15% تخفیف
-            60: 0.22,    // 22% تخفیف
-            80: 0.28,    // 28% تخفیف
-            120: 0.33,   // 33% تخفیف
-            200: 0.40    // 40% تخفیف
-        };
-        
-        // تخفیف‌های حجمی برای تایپ صوتی (بر اساس ساعت)
-        const voiceDiscounts = {
-            1: 0.08,    // 8% تخفیف برای 1 ساعت
-            2: 0.15,    // 15% تخفیف برای 2 ساعت
-            3: 0.22,    // 22% تخفیف برای 3 ساعت
-            4: 0.28,    // 28% تخفیف برای 4 ساعت
-            6: 0.33,    // 33% تخفیف برای 6 ساعت
-            10: 0.40    // 40% تخفیف برای 10 ساعت و بالاتر
-        };
-        
-        // حالت‌های انتخاب شده برای عوامل افزایش قیمت
-        const selectedFactors = {
-            arabicText: false,
-            addImages: false,
-            specializedField: false
-        };
-        
-        // نوع سرویس انتخاب شده (text یا voice)
-        let selectedService = 'text';
-        
-        // انتخاب نوع سرویس
-        function selectService(serviceType) {
-            selectedService = serviceType;
-            
-            // به‌روزرسانی دکمه‌ها
-            document.getElementById('textServiceBtn').classList.toggle('active', serviceType === 'text');
-            document.getElementById('voiceServiceBtn').classList.toggle('active', serviceType === 'voice');
-            
-            // نمایش بخش مرتبط
-            document.getElementById('textTypingSection').classList.toggle('hidden', serviceType !== 'text');
-            document.getElementById('voiceTypingSection').classList.toggle('hidden', serviceType !== 'voice');
-            
-            // به‌روزرسانی برچسب نوع خدمت
-            document.getElementById('serviceTypeValue').textContent = 
-                serviceType === 'text' ? 'تایپ متنی' : 'تایپ صوتی';
-            
-            calculatePrice();
+        // Format numbers with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        
-        // تغییر وضعیت انتخاب یک عامل
-        function toggleFactor(element, factor) {
-            selectedFactors[factor] = !selectedFactors[factor];
-            element.classList.toggle('selected', selectedFactors[factor]);
-            calculatePrice();
+
+        // Get current Persian date
+        function getPersianDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', calendar: 'persian' };
+            return now.toLocaleDateString('fa-IR', options);
         }
-        
-        // محاسبه قیمت
-        function calculatePrice() {
-            if (selectedService === 'text') {
-                calculateTextPrice();
+
+        // State management
+        const state = {
+            activeTab: 'text',
+            textForm: {
+                pages: 1,
+                sourceType: 'digital',
+                deliveryOption: 'standard',
+                termsPerPage: 0,
+                additionalServices: {
+                    lowQualityImages: false,
+                    addImages: false,
+                    addCharts: false,
+                    addExcel: false,
+                    proofreading: false,
+                    punctuation: false,
+                    pdfOutput: false
+                }
+            },
+            audioForm: {
+                hours: 0,
+                minutes: 30,
+                quality: 'clear',
+                deliveryOption: 'standard',
+                additionalServices: {
+                    multipleSpeakers: false,
+                    punctuation: false,
+                    proofreading: false
+                }
+            },
+            showResult: false
+        };
+
+        // DOM Elements
+        const textTab = document.getElementById('text-tab');
+        const audioTab = document.getElementById('audio-tab');
+        const textForm = document.getElementById('text-form');
+        const audioForm = document.getElementById('audio-form');
+        const formContainer = document.getElementById('form-container');
+        const resultContainer = document.getElementById('result-container');
+        const mainForm = document.getElementById('main-form');
+        const backButton = document.getElementById('back-button');
+        const downloadButton = document.getElementById('download-button');
+        const textResult = document.getElementById('text-result');
+        const audioResult = document.getElementById('audio-result');
+        const resultTitle = document.getElementById('result-title');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const inquiryDate = document.getElementById('inquiry-date');
+        const audioInquiryDate = document.getElementById('audio-inquiry-date');
+        const extraChargesBreakdown = document.getElementById('extra-charges-breakdown');
+        const extraItemsList = document.getElementById('extra-items-list');
+        const audioExtraChargesBreakdown = document.getElementById('audio-extra-charges-breakdown');
+        const audioExtraItemsList = document.getElementById('audio-extra-items-list');
+        const resultButtons = document.getElementById('result-buttons');
+
+        // Initialize form
+        function initForm() {
+            // Set active tab
+            setActiveTab(state.activeTab);
+            
+            // Add event listeners
+            textTab.addEventListener('click', () => setActiveTab('text'));
+            audioTab.addEventListener('click', () => setActiveTab('audio'));
+            mainForm.addEventListener('submit', handleSubmit);
+            backButton.addEventListener('click', () => {
+                state.showResult = false;
+                formContainer.classList.remove('hidden');
+                resultContainer.classList.add('hidden');
+            });
+            downloadButton.addEventListener('click', downloadResult);
+            
+            // Form inputs
+            document.getElementById('pages').addEventListener('change', handleTextFormChange);
+            document.getElementById('termsPerPage').addEventListener('change', handleTextFormChange);
+            document.getElementById('hours').addEventListener('change', handleAudioFormChange);
+            document.getElementById('minutes').addEventListener('change', handleAudioFormChange);
+            
+            // Radio buttons
+            document.querySelectorAll('input[name="sourceType"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    state.textForm.sourceType = e.target.value;
+                });
+            });
+            
+            document.querySelectorAll('input[name="deliveryOption"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    state.textForm.deliveryOption = e.target.value;
+                });
+            });
+            
+            document.querySelectorAll('input[name="quality"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    state.audioForm.quality = e.target.value;
+                });
+            });
+            
+            document.querySelectorAll('input[name="audioDeliveryOption"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    state.audioForm.deliveryOption = e.target.value;
+                });
+            });
+            
+            // Checkboxes
+            document.querySelectorAll('#text-form input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const name = e.target.name.split('.')[1];
+                    state.textForm.additionalServices[name] = e.target.checked;
+                });
+            });
+            
+            document.querySelectorAll('#audio-form input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const name = e.target.name.split('.')[1];
+                    state.audioForm.additionalServices[name] = e.target.checked;
+                });
+            });
+        }
+
+        // Set active tab
+        function setActiveTab(tab) {
+            state.activeTab = tab;
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            if (tab === 'text') {
+                textTab.classList.remove('bg-white', 'text-gray-700', 'border');
+                textTab.classList.add('bg-indigo-600', 'text-white', 'active');
+                audioTab.classList.remove('bg-indigo-600', 'text-white', 'active');
+                audioTab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                textForm.classList.remove('hidden');
+                audioForm.classList.add('hidden');
             } else {
-                calculateVoicePrice();
+                audioTab.classList.remove('bg-white', 'text-gray-700', 'border');
+                audioTab.classList.add('bg-indigo-600', 'text-white', 'active');
+                textTab.classList.remove('bg-indigo-600', 'text-white', 'active');
+                textTab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                audioForm.classList.remove('hidden');
+                textForm.classList.add('hidden');
             }
         }
-        
-        // محاسبه زمان تحویل برای تایپ متنی
-        function calculateTextDeliveryTime(pages, isUrgent) {
-            if (isUrgent) {
-                // در حالت فوری، هر روز معادل یک ساعت است
-                if (pages <= 10) return "1 ساعت کاری";
-                if (pages <= 20) return "2 ساعت کاری";
-                if (pages <= 40) return "3 ساعت کاری";
-                if (pages <= 60) return "4 ساعت کاری";
-                if (pages <= 80) return "5 ساعت کاری";
-                if (pages <= 120) return "6 ساعت کاری";
-                if (pages <= 200) return "7 ساعت کاری";
-                
-                // برای بیش از 200 صفحه، به ازای هر 100 صفحه یک ساعت اضافه می‌شود
-                const extraHours = Math.ceil((pages - 200) / 100);
-                return (7 + extraHours) + " ساعت کاری";
-            } else {
-                // حالت عادی
-                if (pages <= 10) return "1 روز کاری";
-                if (pages <= 20) return "2 روز کاری";
-                if (pages <= 40) return "3 روز کاری";
-                if (pages <= 60) return "4 روز کاری";
-                if (pages <= 80) return "5 روز کاری";
-                if (pages <= 120) return "6 روز کاری";
-                if (pages <= 200) return "7 روز کاری";
-                
-                // برای بیش از 200 صفحه، به ازای هر 100 صفحه یک روز اضافه می‌شود
-                const extraDays = Math.ceil((pages - 200) / 100);
-                return (7 + extraDays) + " روز کاری";
-            }
+
+        // Handle text form changes
+        function handleTextFormChange(e) {
+            const { name, value } = e.target;
+            state.textForm[name] = parseInt(value) || 0;
         }
-        
-        // محاسبه زمان تحویل برای تایپ صوتی
-        function calculateVoiceDeliveryTime(minutes, isUrgent) {
-            const totalMinutes = minutes;
+
+        // Handle audio form changes
+        function handleAudioFormChange(e) {
+            const { name, value } = e.target;
+            state.audioForm[name] = parseInt(value) || 0;
+        }
+
+        // Handle form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            state.showResult = true;
+            formContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
             
-            if (isUrgent) {
-                // در حالت فوری، هر روز معادل یک ساعت است
-                if (totalMinutes <= 30) return "30 دقیقه کاری";
-                if (totalMinutes <= 60) return "1 ساعت کاری";
-                if (totalMinutes <= 120) return "2 ساعت کاری";
-                if (totalMinutes <= 180) return "3 ساعت کاری";
-                if (totalMinutes <= 240) return "4 ساعت کاری";
-                if (totalMinutes <= 360) return "6 ساعت کاری";
-                if (totalMinutes <= 600) return "10 ساعت کاری";
-                
-                // برای بیش از 10 ساعت، به ازای هر 2 ساعت یک ساعت اضافه می‌شود
-                const extraHours = Math.ceil((totalMinutes - 600) / 120);
-                return (10 + extraHours) + " ساعت کاری";
+            // Set current date
+            const today = getPersianDate();
+            inquiryDate.textContent = today;
+            audioInquiryDate.textContent = today;
+            
+            if (state.activeTab === 'text') {
+                const price = calculateTextPrice();
+                updateTextResult(price);
+                textResult.classList.remove('hidden');
+                audioResult.classList.add('hidden');
+                resultTitle.textContent = 'نتیجه استعلام تایپ متنی';
             } else {
-                // حالت عادی
-                if (totalMinutes <= 30) return "1 روز کاری";
-                if (totalMinutes <= 60) return "2 روز کاری";
-                if (totalMinutes <= 120) return "3 روز کاری";
-                if (totalMinutes <= 180) return "4 روز کاری";
-                if (totalMinutes <= 240) return "5 روز کاری";
-                if (totalMinutes <= 360) return "6 روز کاری";
-                if (totalMinutes <= 600) return "7 روز کاری";
-                
-                // برای بیش از 10 ساعت، به ازای هر 2 ساعت یک روز اضافه می‌شود
-                const extraDays = Math.ceil((totalMinutes - 600) / 120);
-                return (7 + extraDays) + " روز کاری";
+                const price = calculateAudioPrice();
+                updateAudioResult(price);
+                textResult.classList.add('hidden');
+                audioResult.classList.remove('hidden');
+                resultTitle.textContent = 'نتیجه استعلام تایپ صوتی';
             }
         }
-        
-        // محاسبه قیمت تایپ متنی
+
+        // Calculate discount based on pages
+        function calculateDiscountRate(pages) {
+            if (pages >= 1 && pages <= 10) return 0;
+            if (pages >= 11 && pages <= 20) return 8;
+            if (pages >= 21 && pages <= 40) return 15;
+            if (pages >= 41 && pages <= 60) return 22;
+            if (pages >= 61 && pages <= 80) return 28;
+            if (pages >= 81 && pages <= 120) return 33;
+            if (pages >= 121 && pages <= 200) return 40;
+            if (pages >= 201) return 45;
+            return 0;
+        }
+
+        // Calculate delivery time in days
+        function calculateDeliveryDays(pages) {
+            if (pages <= 10) return 1;
+            if (pages <= 20) return 2;
+            if (pages <= 40) return 3;
+            if (pages <= 60) return 4;
+            if (pages <= 80) return 5;
+            if (pages <= 120) return 6;
+            if (pages <= 200) return 7;
+            return 7 + Math.ceil((pages - 200) / 100);
+        }
+
+        // Calculate text price
         function calculateTextPrice() {
-            // دریافت مقادیر ورودی
-            const pages = parseInt(document.getElementById('pages').value) || 0;
-            const sourceType = document.getElementById('sourceType').value;
-            const englishTerms = parseInt(document.getElementById('englishTerms').value) || 0;
-            const isUrgent = document.getElementById('urgent').value === 'urgent';
+            const BASE_PRICE = 4650;
+            let basePrice = BASE_PRICE * state.textForm.pages;
+            let extraCharges = 0;
+            let extraItems = [];
             
-            // محاسبه هزینه پایه
-            let baseCost = pages * BASE_PRICE;
-            
-            // محاسبه تخفیف حجمی
-            let discountRate = 0;
-            let discountAmount = 0;
-            let discountContainer = document.getElementById('discountContainer');
-            let discountLabel = document.getElementById('discountLabel');
-            
-            // پیدا کردن تخفیف مناسب بر اساس تعداد صفحات
-            for (const [maxPages, rate] of Object.entries(textDiscounts)) {
-                if (pages > 10 && pages <= maxPages) {
-                    discountRate = rate;
-                    discountAmount = Math.floor(baseCost * discountRate);
-                    discountContainer.style.display = 'block';
-                    discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
-                    break;
-                } else if (pages > 200) {
-                    discountRate = textDiscounts[200];
-                    discountAmount = Math.floor(baseCost * discountRate);
-                    discountContainer.style.display = 'block';
-                    discountLabel.textContent = `تخفیف 40% (حجمی):`;
-                    break;
-                } else {
-                    discountContainer.style.display = 'none';
-                }
+            // Source type extra charges
+            if (state.textForm.sourceType === 'handwritten-good') {
+                const amount = 7200 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'دست‌نویس خوش خط', amount });
+            } else if (state.textForm.sourceType === 'handwritten-bad') {
+                const amount = 10800 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'دست‌نویس بد خط', amount });
+            } else if (state.textForm.sourceType === 'multiple-choice') {
+                const amount = 12000 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'سوالات تستی/فرمول', amount });
+            } else if (state.textForm.sourceType === 'english-arabic') {
+                const amount = 10800 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'متون انگلیسی/عربی', amount });
             }
             
-            // محاسبه هزینه پس از تخفیف
-            let discountedCost = baseCost - discountAmount;
-            
-            // هزینه اضافی
-            let extraCost = 0;
-            let extraReasons = [];
-            
-            // هزینه نوع منبع
-            if (sourceType !== 'normal') {
-                const sourceCost = 12000 * pages;
-                extraCost += sourceCost;
-                extraReasons.push({
-                    reason: `بابت ${getSourceTypeText(sourceType)}`,
-                    amount: sourceCost
-                });
+            // Terms per page extra
+            if (state.textForm.termsPerPage > 5) {
+                const amount = 5400 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'اصطلاحات انگلیسی/عربی', amount });
             }
             
-            // هزینه اصطلاحات انگلیسی
-            if (englishTerms > 5) {
-                const englishCost = 10800 * pages;
-                extraCost += englishCost;
-                extraReasons.push({
-                    reason: "بابت اصطلاحات انگلیسی",
-                    amount: englishCost
-                });
+            // Additional services
+            if (state.textForm.additionalServices.lowQualityImages) {
+                const amount = 7200 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'کیفیت پایین عکس‌ها', amount });
             }
             
-            // سایر هزینه‌های اضافی
-            for (const [factor, isSelected] of Object.entries(selectedFactors)) {
-                if (isSelected) {
-                    const factorCost = 10800 * pages;
-                    extraCost += factorCost;
-                    extraReasons.push({
-                        reason: getFactorText(factor),
-                        amount: factorCost
-                    });
-                }
+            if (state.textForm.additionalServices.addImages) {
+                const amount = Math.ceil(state.textForm.pages / 5) * 10000;
+                extraCharges += amount;
+                extraItems.push({ description: 'افزودن عکس به صفحات', amount });
             }
             
-            // محاسبه کل هزینه
-            let totalCost = discountedCost + extraCost;
-            
-            // افزایش هزینه برای تحویل فوری
-            if (isUrgent) {
-                totalCost *= 2;
-                extraReasons.push({
-                    reason: "بابت تحویل فوری",
-                    amount: discountedCost + extraCost
-                });
+            if (state.textForm.additionalServices.addCharts) {
+                const amount = Math.ceil(state.textForm.pages / 5) * 10000;
+                extraCharges += amount;
+                extraItems.push({ description: 'افزودن نمودار به صفحات', amount });
             }
             
-            // محاسبه زمان تحویل
-            const deliveryTime = calculateTextDeliveryTime(pages, isUrgent);
+            if (state.textForm.additionalServices.addExcel) {
+                const amount = Math.ceil(state.textForm.pages / 5) * 10000;
+                extraCharges += amount;
+                extraItems.push({ description: 'افزودن فایل اکسل', amount });
+            }
             
-            // نمایش نتایج
-            document.getElementById('amountLabel').textContent = "تعداد صفحات:";
-            document.getElementById('amountValue').textContent = pages + " صفحه";
-            document.getElementById('basePrice').textContent = baseCost.toLocaleString('fa-IR') + " تومان";
-            document.getElementById('discountAmount').textContent = discountAmount.toLocaleString('fa-IR') + " تومان";
-            document.getElementById('deliveryTime').textContent = deliveryTime;
-            document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
-            document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
+            if (state.textForm.additionalServices.proofreading) {
+                const amount = 200 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'ویراستاری', amount });
+            }
             
-            // نمایش هزینه‌های اضافی با دلایل
-            displayExtraCosts(extraReasons);
+            if (state.textForm.additionalServices.punctuation) {
+                const amount = 1200 * state.textForm.pages;
+                extraCharges += amount;
+                extraItems.push({ description: 'افزودن علائم نگارشی', amount });
+            }
+            
+            if (state.textForm.additionalServices.pdfOutput) {
+                const amount = 10000;
+                extraCharges += amount;
+                extraItems.push({ description: 'خروجی PDF', amount });
+            }
+            
+            // Calculate discount
+            const discountRate = calculateDiscountRate(state.textForm.pages);
+            const discountAmount = (basePrice * discountRate) / 100;
+            
+            const subtotal = basePrice + extraCharges - discountAmount;
+            
+            // Urgent delivery (double price)
+            const total = state.textForm.deliveryOption === 'urgent' ? subtotal * 2 : subtotal;
+            
+            // Delivery time
+            let deliveryDays = calculateDeliveryDays(state.textForm.pages);
+            let deliveryTime = state.textForm.deliveryOption === 'urgent' 
+                ? `${Math.round(deliveryDays * 24)} ساعت` 
+                : `${deliveryDays} روز`;
+            
+            return {
+                basePrice: basePrice,
+                discountRate: discountRate,
+                discountAmount: discountAmount,
+                extraCharges: extraCharges,
+                extraItems: extraItems,
+                deliveryTime: deliveryTime,
+                deliveryType: state.textForm.deliveryOption,
+                subtotal: subtotal,
+                total: total,
+                prepayment: total * 0.5 // 50% prepayment
+            }
         }
-        
-        // محاسبه قیمت تایپ صوتی
-        function calculateVoicePrice() {
-            // دریافت مقادیر ورودی
-            const hours = parseInt(document.getElementById('hours').value) || 0;
-            const minutes = parseInt(document.getElementById('minutes').value) || 0;
-            const audioQuality = document.getElementById('audioQuality').value;
-            const isUrgent = document.getElementById('audioUrgent').value === 'urgent';
-            
-            // محاسبه کل دقیقه‌ها
-            const totalMinutes = hours * 60 + minutes;
-            const totalHours = totalMinutes / 60;
-            
-            // محاسبه هزینه پایه
-            const baseCost = totalHours * VOICE_PRICE_PER_HOUR;
-            
-            // محاسبه تخفیف حجمی
-            let discountRate = 0;
-            let discountAmount = 0;
-            let discountContainer = document.getElementById('discountContainer');
-            let discountLabel = document.getElementById('discountLabel');
-            
-            // تخفیف‌ها بر اساس ساعات
-            if (totalHours >= 10) {
-                discountRate = 0.40;
-            } else if (totalHours >= 6) {
-                discountRate = 0.33;
-            } else if (totalHours >= 4) {
-                discountRate = 0.28;
-            } else if (totalHours >= 3) {
-                discountRate = 0.22;
-            } else if (totalHours >= 2) {
-                discountRate = 0.15;
-            } else if (totalHours >= 1) {
-                discountRate = 0.08;
-            }
-            
-            discountAmount = Math.floor(baseCost * discountRate);
-            
-            if (discountAmount > 0) {
-                discountContainer.style.display = 'block';
-                discountLabel.textContent = `تخفیف ${Math.round(discountRate * 100)}% (حجمی):`;
-            } else {
-                discountContainer.style.display = 'none';
-            }
-            
-            // هزینه پس از تخفیف
-            let discountedCost = baseCost - discountAmount;
-            
-            // هزینه اضافی
-            let extraCost = 0;
-            let extraReasons = [];
-            
-            // هزینه کیفیت صدا
-            if (audioQuality !== 'normal') {
-                let qualityCost = 0;
-                if (audioQuality === 'low') {
-                    qualityCost = baseCost * 0.5;
-                } else if (audioQuality === 'multipleSpeakers') {
-                    qualityCost = baseCost * 0.1;
-                }
-                
-                extraCost += qualityCost;
-                extraReasons.push({
-                    reason: `بابت ${getAudioQualityText(audioQuality)}`,
-                    amount: qualityCost
-                });
-            }
-            
-            // محاسبه کل هزینه
-            let totalCost = discountedCost + extraCost;
-            
-            // افزایش هزینه برای تحویل فوری
-            if (isUrgent) {
-                totalCost *= 2;
-                extraReasons.push({
-                    reason: "بابت تحویل فوری",
-                    amount: discountedCost + extraCost
-                });
-            }
-            
-            // محاسبه زمان تحویل
-            const deliveryTime = calculateVoiceDeliveryTime(totalMinutes, isUrgent);
-            
-            // نمایش نتایج
-            document.getElementById('amountLabel').textContent = "مدت زمان:";
-            document.getElementById('amountValue').textContent = 
-                (hours > 0 ? hours + " ساعت و " : "") + minutes + " دقیقه";
-            document.getElementById('basePrice').textContent = Math.floor(baseCost).toLocaleString('fa-IR') + " تومان";
-            document.getElementById('discountAmount').textContent = Math.floor(discountAmount).toLocaleString('fa-IR') + " تومان";
-            document.getElementById('deliveryTime').textContent = deliveryTime;
-            document.getElementById('totalPrice').textContent = Math.floor(totalCost).toLocaleString('fa-IR');
-            document.getElementById('prepayment').textContent = Math.floor(totalCost * 0.7).toLocaleString('fa-IR');
-            
-            // نمایش هزینه‌های اضافی با دلایل
-            displayExtraCosts(extraReasons);
+
+        // Calculate audio discount rate
+        function calculateAudioDiscountRate(minutes) {
+            if (minutes <= 30) return 0;
+            if (minutes <= 60) return 8;
+            if (minutes <= 120) return 15;
+            if (minutes <= 180) return 22;
+            if (minutes <= 240) return 28;
+            if (minutes <= 360) return 33;
+            if (minutes <= 600) return 40;
+            return 45;
         }
-        
-        // نمایش هزینه‌های اضافی با دلایل
-        function displayExtraCosts(extraReasons) {
-            const container = document.getElementById('extraCostsContainer');
+
+        // Calculate audio delivery days
+        function calculateAudioDeliveryDays(minutes) {
+            if (minutes <= 30) return 1;
+            if (minutes <= 60) return 2;
+            if (minutes <= 120) return 3;
+            if (minutes <= 180) return 4;
+            if (minutes <= 240) return 5;
+            if (minutes <= 360) return 6;
+            if (minutes <= 600) return 7;
+            return 7 + Math.ceil((minutes - 600) / 60);
+        }
+
+        // Calculate audio price
+        function calculateAudioPrice() {
+            const BASE_PRICE_PER_MINUTE = 2325;
+            const totalMinutes = state.audioForm.hours * 60 + state.audioForm.minutes;
+            let basePrice = BASE_PRICE_PER_MINUTE * totalMinutes;
+            let extraCharges = 0;
+            let extraItems = [];
+            
+            // Quality extra charges
+            if (state.audioForm.quality === 'low') {
+                const amount = 5000 * totalMinutes;
+                extraCharges += amount;
+                extraItems.push({ description: 'کیفیت پایین صوت', amount });
+            }
+            
+            // Additional services
+            if (state.audioForm.additionalServices.multipleSpeakers) {
+                const amount = 200 * totalMinutes;
+                extraCharges += amount;
+                extraItems.push({ description: 'چند گوینده بودن', amount });
+            }
+            
+            if (state.audioForm.additionalServices.punctuation) {
+                const amount = 1200 * totalMinutes;
+                extraCharges += amount;
+                extraItems.push({ description: 'افزودن علائم نگارشی', amount });
+            }
+            
+            if (state.audioForm.additionalServices.proofreading) {
+                const amount = 200 * totalMinutes;
+                extraCharges += amount;
+                extraItems.push({ description: 'ویراستاری', amount });
+            }
+            
+            // Calculate discount
+            const discountRate = calculateAudioDiscountRate(totalMinutes);
+            const discountAmount = (basePrice * discountRate) / 100;
+            
+            const subtotal = basePrice + extraCharges - discountAmount;
+            
+            // Urgent delivery (double price)
+            const total = state.audioForm.deliveryOption === 'urgent' ? subtotal * 2 : subtotal;
+            
+            // Delivery time
+            let deliveryDays = calculateAudioDeliveryDays(totalMinutes);
+            let deliveryTime = state.audioForm.deliveryOption === 'urgent' 
+                ? `${Math.round(deliveryDays * 24)} ساعت` 
+                : `${deliveryDays} روز`;
+            
+            return {
+                basePrice: basePrice,
+                discountRate: discountRate,
+                discountAmount: discountAmount,
+                extraCharges: extraCharges,
+                extraItems: extraItems,
+                deliveryTime: deliveryTime,
+                deliveryType: state.audioForm.deliveryOption,
+                subtotal: subtotal,
+                total: total,
+                prepayment: total * 0.5 // 50% prepayment
+            }
+        }
+
+        // Update text result
+        function updateTextResult(price) {
+            document.getElementById('pages-result').textContent = state.textForm.pages;
+            document.getElementById('base-price').textContent = formatNumber(Math.round(price.basePrice));
+            document.getElementById('discount-rate').textContent = price.discountRate;
+            document.getElementById('discount-amount').textContent = formatNumber(Math.round(price.discountAmount));
+            document.getElementById('extra-charges').textContent = formatNumber(Math.round(price.extraCharges));
+            document.getElementById('delivery-time').textContent = price.deliveryTime;
+            document.getElementById('total-price').textContent = formatNumber(Math.round(price.total));
+            document.getElementById('prepayment').textContent = formatNumber(Math.round(price.prepayment));
+            
+            // Update extra charges breakdown
+            updateExtraChargesBreakdown(price.extraItems, extraItemsList, extraChargesBreakdown);
+        }
+
+        // Update audio result
+        function updateAudioResult(price) {
+            document.getElementById('audio-duration').textContent = 
+                `${state.audioForm.hours > 0 ? `${state.audioForm.hours} ساعت و ` : ''}${state.audioForm.minutes} دقیقه`;
+            document.getElementById('audio-base-price').textContent = formatNumber(Math.round(price.basePrice));
+            document.getElementById('audio-discount-rate').textContent = price.discountRate;
+            document.getElementById('audio-discount-amount').textContent = formatNumber(Math.round(price.discountAmount));
+            document.getElementById('audio-extra-charges').textContent = formatNumber(Math.round(price.extraCharges));
+            document.getElementById('audio-delivery-time').textContent = price.deliveryTime;
+            document.getElementById('audio-total-price').textContent = formatNumber(Math.round(price.total));
+            document.getElementById('audio-prepayment').textContent = formatNumber(Math.round(price.prepayment));
+            
+            // Update extra charges breakdown
+            updateExtraChargesBreakdown(price.extraItems, audioExtraItemsList, audioExtraChargesBreakdown);
+        }
+
+        // Update extra charges breakdown
+        function updateExtraChargesBreakdown(items, container, wrapper) {
             container.innerHTML = '';
             
-            let totalExtra = 0;
-            
-            extraReasons.forEach(reason => {
-                totalExtra += reason.amount;
+            if (items.length > 0) {
+                wrapper.classList.remove('hidden');
                 
-                const extraRow = document.createElement('div');
-                extraRow.className = 'result-row';
-                
-                const reasonSpan = document.createElement('span');
-                reasonSpan.textContent = reason.reason;
-                
-                const amountSpan = document.createElement('span');
-                amountSpan.textContent = Math.floor(reason.amount).toLocaleString('fa-IR') + " تومان";
-                
-                extraRow.appendChild(reasonSpan);
-                extraRow.appendChild(amountSpan);
-                container.appendChild(extraRow);
-            });
-            
-            if (extraReasons.length === 0) {
-                const noExtraRow = document.createElement('div');
-                noExtraRow.className = 'result-row';
-                noExtraRow.innerHTML = '<span>هزینه اضافی:</span><span>0 تومان</span>';
-                container.appendChild(noExtraRow);
+                items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'extra-charge-item flex justify-between';
+                    div.innerHTML = `
+                        <span>${item.description}:</span>
+                        <span class="font-medium text-green-600">+${formatNumber(Math.round(item.amount))} تومان</span>
+                    `;
+                    container.appendChild(div);
+                });
+            } else {
+                wrapper.classList.add('hidden');
             }
         }
-        
-        // دانلود تصویر از بخش نتیجه
-        function downloadResultImage() {
-            const resultBox = document.getElementById('resultBox');
+
+        // Download result as image
+        function downloadResult() {
+            const resultCard = document.getElementById('result-card');
+            const originalDisplay = resultButtons.style.display;
             
-            html2canvas(resultBox).then(canvas => {
+            // Hide buttons temporarily
+            resultButtons.style.display = 'none';
+            
+            html2canvas(resultCard, {
+                scale: 2,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
-                link.download = 'نتیجه-محاسبه-قیمت-تایپ.png';
-                link.href = canvas.toDataURL('image/png');
+                link.download = `استعلام-خدمات-تایپ-${new Date().toLocaleDateString('fa-IR')}.png`;
+                link.href = imgData;
                 link.click();
+                
+                // Show buttons again
+                resultButtons.style.display = originalDisplay;
             });
         }
-        
-        // توابع کمکی برای نمایش متن
-        function getSourceTypeText(sourceType) {
-            const texts = {
-                'goodHandwriting': 'دست‌نویس خوش‌خط',
-                'badHandwriting': 'دست‌نویس بدخط',
-                'lowQuality': 'کیفیت پایین',
-                'testQuestions': 'سوالات تستی'
-            };
-            return texts[sourceType] || sourceType;
-        }
-        
-        function getFactorText(factor) {
-            const texts = {
-                'arabicText': 'متن فارسی-عربی',
-                'addImages': 'افزودن عکس به صفحات',
-                'specializedField': 'زمینه تخصصی'
-            };
-            return texts[factor] || factor;
-        }
-        
-        function getAudioQualityText(quality) {
-            const texts = {
-                'low': 'کیفیت پایین صوت',
-                'multipleSpeakers': 'چند گوینده'
-            };
-            return texts[quality] || quality;
-        }
-        
-        // محاسبه اولیه هنگام بارگذاری صفحه
-        window.onload = function() {
-            // اضافه کردن event listeners
-            const inputs = ['pages', 'englishTerms', 'hours', 'minutes'];
-            inputs.forEach(id => {
-                document.getElementById(id).addEventListener('input', function() {
-                    calculatePrice();
-                });
-            });
-            
-            const selects = ['sourceType', 'urgent', 'audioQuality', 'audioUrgent'];
-            selects.forEach(id => {
-                document.getElementById(id).addEventListener('change', function() {
-                    calculatePrice();
-                });
-            });
-            
-            // دکمه دانلود تصویر
-            document.getElementById('downloadImageBtn').addEventListener('click', downloadResultImage);
-            
-            // محاسبه اولیه
-            calculatePrice();
-        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', initForm);
     </script>
 </body>
 </html>
