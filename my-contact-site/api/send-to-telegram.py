@@ -1,12 +1,15 @@
 from http.server import BaseHTTPRequestHandler
 import requests
 import json
-import os
+import os  # <-- اضافه کردن این خط
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
-        TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-        CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+        # خواندن توکن از متغیر محیطی
+        TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')  # <-- تغییر این خط
+        CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')  # <-- تغییر این خط
+        
+        # بقیه کد بدون تغییر...
         
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
