@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وب سایت محمدرضا نورکی | Mohammadreza Nooraki Website</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+         @font-face {
+        font-family: 'Ketab';
+        src: url('fonts/ketab.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+        * {
+            font-family: 'Ketab', Tahoma, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        section:target {
+            padding-top: 30px;
+            margin-top: -30px;
+        }
+        
+        #container {
+            text-align: justify;
+            color: #333333;
+            margin: 0 auto;
+            width: 95%;
+            padding: 10px;
+        }
+        
+        body.dark, body.dark h1, body.dark h2, body.dark h3, body.dark p, .dark input, .dark textarea {
+            color: #ffffff;
+            background-color: #333333;
+        }
+        
+        .dark #contact-form input, .dark #contact-form textarea {
+            border: 2px solid #ffffff;
+        }
+        
+        #dark-mode button {
+            border: none;
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 60px;
+            border-radius: 10px;
+        }
+        
+        #dark-mode button:hover {
+            background-color: grey;
+            cursor: pointer;
+        }
+        
+        .dark #container #dark-mode button {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        
+        .dark #container #dark-mode button:hover {
+            background-color: lightgrey;
+        }
+        
+        #title {
+            margin-top: 65px;
+        }
+        
+        #title h1 {
+            font-size: 52px;
+            text-align: right;
+        }
+        
+        h1, h2, #menu, button, footer span {
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+        
+        h2 {
+            font-size: 27px;
+        }
+        
+        #menu {
+            position: fixed;
+            top: 12px;
+            right: 0;
+        }
+        
+        #menu ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-direction: row-reverse;
+        }
+        
+        #menu li {
+            list-style: none;
+            text-indent: 0;
+            opacity: 1;
+            transition: opacity 1.5s;
+        }
+        
+        #menu li a {
+            text-decoration: none;
+            padding: 10px;
+            color: #333333;
+            font-weight: bold;
+            background-color: lightgreen;
+            border-left: 3px solid #ffffff;
+        }
+        
+        #menu li.hidden-link {
+            opacity: 0;
+        }
+        
+        .dark #menu li a {
+            border-left-color: #333333;
+        }
+        
+        #contact-form input {
+            height: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        #contact-form input, #contact-form button, #contact-form textarea {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid #333333;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        button#send-btn {
+            padding: 10px 40px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333333;
+            background-color: lightgreen;
+            border: 0px none transparent;
+            border-radius: 15px;
+            width: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        button#send-btn:hover, #menu li a:hover {
+            background-color: #76c294;
+        }
+        
+        #menu li.active a {
+            background-color: coral;
+        }
+        
+        hr {
+            height: 4px;
+            background-color: lightgreen;
+            border: 0 none;
+            margin: 30px 0;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        @media screen and (min-width: 750px) {
+            #container {
+                width: 750px;
+            }
+            #menu {
+                margin: 0 0;
+                right: 10px;
+            }
+            #dark-mode {
+                width: 750px;
+                text-align: left;
+            }
+            #contact-form input {
+                width: 100%;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+        
+        .persian-text {
+            line-height: 2;
+            text-align: justify;
+            font-size: 18px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="dark-mode"><button><span>حالت روشن</span></button></div>
+        <header id="title"><h1>وب سایت تک صفحه‌ای</h1></header>
+        <nav id="menu">
+            <ul>
+                <li class="hidden-link"><a href="#container">بالا</a></li>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#some-content">محتوا</a></li>
+                <li><a href="#contact">تماس با من</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <section id="about">
+            <article>
+                <h2 class="section-title">درباره من</h2>
+                <div class="persian-text">
+<p>
+    محمدرضاتورکی متولد 1379
+</p>
+                </div>
+            </article>
+        </section>
+        <hr>
+        <section id="some-content">
+            <article>
+                <h2 class="section-title">خدمات ما</h2>
+                <div class="persian-text">
+                <p>
+                    سایت در دست راه اندازی است .
+                </p>   
+                </div>
+            </article>
+        </section>
+        <hr>
+        <section id="contact">
+            <h2 class="section-title">تماس با ما</h2>
+            <a href="mailto:noorakimohammadrezamail@gmail.com">noorakimohammadrezamail@gmail.com</a>
+        </section>
+        <hr>
+        <footer>
+            <p><span>طراحی شده توسط محمدرضا نورکی</span></p>
+        </footer>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('body').addClass('dark');
+            $('#menu li:first-child').addClass('active');
+            
+            $('#dark-mode').click(function(){
+                $('body').toggleClass('dark');
+                if ($('body').hasClass('dark')) {
+                    $('#dark-mode span').html('حالت روشن');
+                } else {
+                    $('#dark-mode span').html('حالت تاریک');
+                }
+            });
+            
+            var previous = null;
+            $('#menu li').click(function(){
+                if (previous) {
+                    previous.removeClass('active');
+                }
+                $(this).addClass('active');
+                previous = $(this);
+            });
+            
+            $('#send-btn').click(function(e) {
+                e.preventDefault();
+                alert('پیام شما با موفقیت ارسال شد!');
+                $('#contact-form')[0].reset();
+            });
+            
+            $.fn.inViewport = function(cb) {
+                return this.each(function(i,el) {
+                    function visPx(){
+                        var elH = $(el).outerHeight(),
+                            H = $(window).height(),
+                            r = el.getBoundingClientRect(), 
+                            t = r.top, 
+                            b = r.bottom;
+                        return cb.call(el, Math.max(0, t > 0 ? Math.min(elH, H - t) : (b < H ? b : H)));  
+                    }
+                    visPx();
+                    $(window).on("resize scroll", visPx);
+                });
+            };
+            
+            $('#container, #about, #some-content, #contact').inViewport(function(px) {
+                if (px) {
+                    var identifiant = $(this).attr('id');
+                    $("#menu li a").each(function() {
+                        if ($(this).attr('href').replace('#','') === identifiant) {
+                            if (previous) previous.removeClass('active');
+                            $(this).parent().addClass('active');
+                            previous = $(this).parent();
+                        }
+                    });
+                }
+            });
+            
+            $('#title').inViewport(function(px) {
+                if (px) {
+                    $('#menu li:first-child').addClass('hidden-link');
+                } else {
+                    $('#menu li:first-child').removeClass('hidden-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
