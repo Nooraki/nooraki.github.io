@@ -1,323 +1,714 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="fa">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وب سایت محمدرضا نورکی | Mohammadreza Nooraki Website</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-         @font-face {
-        font-family: 'Ketab';
-        src: url('fonts/ketab.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-    
-        * {
-            font-family: 'Ketab', Tahoma, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        section:target {
-            padding-top: 30px;
-            margin-top: -30px;
-        }
-        
-        #container {
-            text-align: justify;
-            color: #333333;
-            margin: 0 auto;
-            width: 95%;
-            padding: 10px;
-        }
-        
-        body.dark, body.dark h1, body.dark h2, body.dark h3, body.dark p, .dark input, .dark textarea {
-            color: #ffffff;
-            background-color: #333333;
-        }
-        
-        .dark #contact-form input, .dark #contact-form textarea {
-            border: 2px solid #ffffff;
-        }
-        
-        #dark-mode button {
-            border: none;
-            background-color: #333333;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 10px;
-            margin-top: 60px;
-            border-radius: 10px;
-        }
-        
-        #dark-mode button:hover {
-            background-color: grey;
-            cursor: pointer;
-        }
-        
-        .dark #container #dark-mode button {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        
-        .dark #container #dark-mode button:hover {
-            background-color: lightgrey;
-        }
-        
-        #title {
-            margin-top: 65px;
-        }
-        
-        #title h1 {
-            font-size: 52px;
-            text-align: right;
-        }
-        
-        h1, h2, #menu, button, footer span {
-            letter-spacing: 1px;
-            font-weight: normal;
-        }
-        
-        h2 {
-            font-size: 27px;
-        }
-        
-        #menu {
-            position: fixed;
-            top: 12px;
-            right: 0;
-        }
-        
-        #menu ul {
-            display: flex;
-            margin: 0;
-            padding: 0;
-            flex-direction: row-reverse;
-        }
-        
-        #menu li {
-            list-style: none;
-            text-indent: 0;
-            opacity: 1;
-            transition: opacity 1.5s;
-        }
-        
-        #menu li a {
-            text-decoration: none;
-            padding: 10px;
-            color: #333333;
-            font-weight: bold;
-            background-color: lightgreen;
-            border-left: 3px solid #ffffff;
-        }
-        
-        #menu li.hidden-link {
-            opacity: 0;
-        }
-        
-        .dark #menu li a {
-            border-left-color: #333333;
-        }
-        
-        #contact-form input {
-            height: 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        #contact-form input, #contact-form button, #contact-form textarea {
-            display: block;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 2px solid #333333;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        button#send-btn {
-            padding: 10px 40px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #333333;
-            background-color: lightgreen;
-            border: 0px none transparent;
-            border-radius: 15px;
-            width: auto;
-            margin: 0 auto;
-            display: block;
-        }
-        
-        button#send-btn:hover, #menu li a:hover {
-            background-color: #76c294;
-        }
-        
-        #menu li.active a {
-            background-color: coral;
-        }
-        
-        hr {
-            height: 4px;
-            background-color: lightgreen;
-            border: 0 none;
-            margin: 30px 0;
-        }
-        
-        footer p {
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        @media screen and (min-width: 750px) {
-            #container {
-                width: 750px;
-            }
-            #menu {
-                margin: 0 0;
-                right: 10px;
-            }
-            #dark-mode {
-                width: 750px;
-                text-align: left;
-            }
-            #contact-form input {
-                width: 100%;
-            }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-        }
-        
-        .persian-text {
-            line-height: 2;
-            text-align: justify;
-            font-size: 18px;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #2e7d32;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MohammadReza Nooraki | محمدرضا نورکی</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/Logo.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div id="container">
-        <div id="dark-mode"><button><span>حالت روشن</span></button></div>
-        <header id="title"><h1>وب سایت تک صفحه‌ای</h1></header>
-        <nav id="menu">
-            <ul>
-                <li class="hidden-link"><a href="#container">بالا</a></li>
-                <li><a href="#about">درباره من</a></li>
-                <li><a href="#some-content">محتوا</a></li>
-                <li><a href="#contact">تماس با من</a></li>
-            </ul>
-        </nav>
-        <hr>
-        <section id="about">
-            <article>
-                <h2 class="section-title">درباره من</h2>
-                <div class="persian-text">
-<p>
-    محمدرضاتورکی متولد 1379
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" style="border-radius: 10%;" alt="Richard hanrick" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Nooraki</h1>
+
+          <p class="title">Designer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:Noorakimohammadrezamail@gmail.com" class="contact-link">Noorakimohammadrezamail@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+989059780482" class="contact-link">+98 (905) 978-0482</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">Dec 03, 2000</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Gonabad, KhorasanRazavi, IRAN</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+         
+
+          <li class="social-item">
+            <a href="https://x.com/imnooraki" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://instagram.com/imnooraki" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+
+
+      <li class="social-item">
+            <a href="https://t.me/imnooraki" class="social-link">
+              <ion-icon name="logo-telegram"></ion-icon>
+            </a>
+          </li>
+
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Ai Bot</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+        <p>
+  Mohammad Reza Nooraki was born in Gonabad in December 1990. After his primary and secondary education, he studied in the experimental field. After passing the entrance exam, he changed his major and continued his studies in jurisprudence and law at Motahari University.
+
 </p>
-                </div>
-            </article>
+
+          <p>
+            Hello, I am Mohammad Reza Nooraki, I am at your service to make your brand more visible. Being visible in cyberspace will also be a way to increase sales.
+
+          </p>
+
+          <p>
+I started designing with page layout in one of our city's newspapers, and after studying and gaining experience over the past 5 years, I am now at your service in designing posters and brochures in Photoshop.
+          </p>
         </section>
-        <hr>
-        <section id="some-content">
-            <article>
-                <h2 class="section-title">خدمات ما</h2>
-                <div class="persian-text">
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photoshop design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+          
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Ghalichi</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
                 <p>
-                    سایت در دست راه اندازی است .
-                </p>   
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience
+                  and is very concerned about the needs of client.                 </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-6-color.png" alt="client logo">
+              </a>
+            </li>
+
+           
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">University Motahari</h4>
+
+              <span>2019 — 2023</span>
+
+              <p class="timeline-text">
+After passing the entrance exam, he changed his major due to his interest and studied at Shahid Motahari University.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">School</h4>
+
+              <span>2007 — 2019</span>
+
+              <p class="timeline-text">
+                He attended primary and preschool school at Shahid Akhundzadeh School and middle and high school at Shahid Beheshti School
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Freelance</h4>
+
+              <span>2016 — Present</span>
+
+              <p class="timeline-text">
+                During his studies, he worked as a freelance designer using graphic software as a digital arts student.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Journalist
+</h4>
+
+              <span>2022 — 2023</span>
+
+              <p class="timeline-text">He has been active in the Gonabad newspaper as a designer and administrator for a year.
+
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="50">50%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Photoshop</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Indesign</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Illustretor</h5>
+                <data value="50">50%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="Photoshop">
+              <a href="assets/images/Design (1).jpg">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Poster</h3>
+
+                <p class="project-category">Photoshop</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="Photoshop">
+              <a href="assets/images/Design (2).jpg">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Poster</h3>
+
+                <p class="project-category">Photoshop</p>
+
+              </a>
+            </li>
+
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2025</h3>
+
+                  <p class="blog-text">
+                    Comming Soon
+                  </p>
+
                 </div>
-            </article>
+
+              </a>
+            </li>
+
+
+          </ul>
+
         </section>
-        <hr>
-        <section id="contact">
-            <h2 class="section-title">تماس با ما</h2>
-            <a href="mailto:noorakimohammadrezamail@gmail.com">noorakimohammadrezamail@gmail.com</a>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Ai Bot</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://cdn.botpress.cloud/webchat/v3.1/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/27/04/20250727040015-2ENXQJ1I.json"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
         </section>
-        <hr>
-        <footer>
-            <p><span>طراحی شده توسط محمدرضا نورکی</span></p>
-        </footer>
+
+      </article>
+
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('body').addClass('dark');
-            $('#menu li:first-child').addClass('active');
-            
-            $('#dark-mode').click(function(){
-                $('body').toggleClass('dark');
-                if ($('body').hasClass('dark')) {
-                    $('#dark-mode span').html('حالت روشن');
-                } else {
-                    $('#dark-mode span').html('حالت تاریک');
-                }
-            });
-            
-            var previous = null;
-            $('#menu li').click(function(){
-                if (previous) {
-                    previous.removeClass('active');
-                }
-                $(this).addClass('active');
-                previous = $(this);
-            });
-            
-            $('#send-btn').click(function(e) {
-                e.preventDefault();
-                alert('پیام شما با موفقیت ارسال شد!');
-                $('#contact-form')[0].reset();
-            });
-            
-            $.fn.inViewport = function(cb) {
-                return this.each(function(i,el) {
-                    function visPx(){
-                        var elH = $(el).outerHeight(),
-                            H = $(window).height(),
-                            r = el.getBoundingClientRect(), 
-                            t = r.top, 
-                            b = r.bottom;
-                        return cb.call(el, Math.max(0, t > 0 ? Math.min(elH, H - t) : (b < H ? b : H)));  
-                    }
-                    visPx();
-                    $(window).on("resize scroll", visPx);
-                });
-            };
-            
-            $('#container, #about, #some-content, #contact').inViewport(function(px) {
-                if (px) {
-                    var identifiant = $(this).attr('id');
-                    $("#menu li a").each(function() {
-                        if ($(this).attr('href').replace('#','') === identifiant) {
-                            if (previous) previous.removeClass('active');
-                            $(this).parent().addClass('active');
-                            previous = $(this).parent();
-                        }
-                    });
-                }
-            });
-            
-            $('#title').inViewport(function(px) {
-                if (px) {
-                    $('#menu li:first-child').addClass('hidden-link');
-                } else {
-                    $('#menu li:first-child').removeClass('hidden-link');
-                }
-            });
-        });
-    </script>
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
